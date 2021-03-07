@@ -47,10 +47,11 @@ class MyApp extends StatelessWidget {
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: [
+              TimersPage(),
               LearnPage(),
               BossesPage(),
               DuelsPage(),
-              TimersPage(),
+              // TimersPage(),
               MapsPage(),
             ],
           ),
