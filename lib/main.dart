@@ -23,8 +23,40 @@ void main() {
   );
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+/// This is the stateful widget that the main application instantiates.
+class MyApp extends StatefulWidget {
+  MyApp({Key key}) : super(key: key);
+
+  @override
+  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+}
+
+/// This is the private State class that goes with MyStatefulWidget.
+class _MyStatefulWidgetState extends State<MyApp> {
+  int _selectedIndex = 1; // Selects the second bottom tab
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: About',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Donate',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: Code',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,13 +79,35 @@ class MyApp extends StatelessWidget {
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: [
-              TimersPage(),
               LearnPage(),
               BossesPage(),
               DuelsPage(),
-              // TimersPage(),
+              TimersPage(),
               MapsPage(),
             ],
+            /* body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      */
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.alternate_email),
+                label: 'About',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.monetization_on),
+                label: 'Donate',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.code),
+                label: 'Code',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            selectedItemColor: Colors.amber[800],
+            onTap: _onItemTapped,
           ),
         ),
       ),

@@ -9,7 +9,10 @@ class TimersPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         mainAxisSize: MainAxisSize.min,
-        children: [CastrumTimer(), WeatherTimer(), StarMobsTimer()],
+        children: [
+          CastrumTimer(),
+          // WeatherTimer(), StarMobsTimer()
+        ],
       ),
     );
   }
@@ -82,19 +85,17 @@ class _CountDownTimerState extends State<CastrumTimer>
                       child: Stack(children: <Widget>[
                         IgnorePointer(
                           ignoring: true,
-                          child: Positioned.fill(
-                            child: Align(
-                              alignment: FractionalOffset.center,
-                              child: Container(
-                                color: Color.fromRGBO(0, 255, 0, .5),
-                              ),
+                          child: Align(
+                            alignment: FractionalOffset.center,
+                            child: Container(
+                              color: Color.fromRGBO(0, 255, 0, .5),
                             ),
-                            /*child: Icon(
+                          ),
+                          /*child: Icon(
                                   Icons.audiotrack,
                                   color: Color.fromRGBO(255, 0, 0, .5),
                                   size: 48.0,
                                 ),),*/
-                          ),
                         ),
                         Positioned.fill(
                           child: AnimatedBuilder(
@@ -200,19 +201,16 @@ class _CountDownTimerState extends State<CastrumTimer>
                         // The time (MM:ss)
                         IgnorePointer(
                           ignoring: true,
-                          child: Positioned.fill(
-                            child: Align(
-                              alignment: FractionalOffset.center,
-                              child: AnimatedBuilder(
-                                  animation: _controller,
-                                  builder:
-                                      (BuildContext context, Widget child) {
-                                    return new Text(
-                                      timerString,
-                                      style: themeData.textTheme.headline3,
-                                    );
-                                  }),
-                            ),
+                          child: Align(
+                            alignment: FractionalOffset.center,
+                            child: AnimatedBuilder(
+                                animation: _controller,
+                                builder: (BuildContext context, Widget child) {
+                                  return new Text(
+                                    timerString,
+                                    style: themeData.textTheme.headline3,
+                                  );
+                                }),
                           ),
                         ),
                       ]),
