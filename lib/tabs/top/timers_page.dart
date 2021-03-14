@@ -11,7 +11,8 @@ class TimersPage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           CastrumTimer(),
-          // WeatherTimer(), StarMobsTimer()
+          StarMobsTimer(),
+          // WeatherTimer(),
         ],
       ),
     );
@@ -23,8 +24,13 @@ class CastrumTimer extends StatefulWidget {
   _CountDownTimerState createState() => _CountDownTimerState();
 }
 
+// TODO: Do you see this AutomaticKeepAliveClientMixin and wantKeepAlive? Apply it everywhere
 class _CountDownTimerState extends State<CastrumTimer>
-    with TickerProviderStateMixin {
+    with AutomaticKeepAliveClientMixin<CastrumTimer>, TickerProviderStateMixin {
+  // Keep this tab alive
+  @override
+  bool get wantKeepAlive => true;
+
   AnimationController _controller;
 
   String get timerString {
@@ -234,6 +240,7 @@ class _CountDownTimerState extends State<CastrumTimer>
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
                             FloatingActionButton(
+                              heroTag: 'CastrumStartStop',
                               child: AnimatedBuilder(
                                 animation: _controller,
                                 builder: (BuildContext context, Widget child) {
@@ -274,7 +281,24 @@ class _CountDownTimerState extends State<CastrumTimer>
                 ),
               ),
             ],
-          )
+          ),
+          Column(
+            children: <Widget>[
+              Expanded(
+                child: Align(
+                  alignment: FractionalOffset.center,
+                  child: IconButton(
+                    icon: const Icon(Icons.help),
+                    iconSize: 36,
+                    color: Colors.grey,
+                    tooltip:
+                        'Castrum always spawns 60 minutes after the last raid closed, or 60 minutes from the start of the Bozjan Southern Front instance',
+                    onPressed: () {},
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
@@ -312,6 +336,7 @@ class WeatherTimer extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           FloatingActionButton.extended(
+            heroTag: 'WeatherTimer',
             icon: const Icon(Icons.add),
             label: Text('Add timer'),
             onPressed: () {},
@@ -327,43 +352,132 @@ class StarMobsTimer extends StatefulWidget {
   _StarMobsTimerState createState() => _StarMobsTimerState();
 }
 
-/*
 class _StarMobsTimerState extends State<StarMobsTimer>
     with TickerProviderStateMixin {
+  AnimationController _controller;
+
   @override
-  Widget build(BuildContext context) {
-    // Resize the grid items https://stackoverflow.com/questions/48405123/how-to-set-custom-height-for-widget-in-gridview-in-flutter
-    var size = MediaQuery.of(context).size;
-
-    final double itemHeight = (size.height - kToolbarHeight - 1000) / 2;
-    final double itemWidth = size.width / 2;
-*/
-class _StarMobsTimerState extends State<StarMobsTimer>
-    with TickerProviderStateMixin {
-  double _size = 50.0;
-  double targetValue = 24.0;
-  bool _large = false;
-
-  void _updateSize() {
-    setState(() {
-      _size = _large ? 250.0 : 100.0;
-      _large = !_large;
-    });
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 3600),
+    );
   }
 
+  // First I put it in a row, then I pad it, then I put it in Column[1], I expand the column, then I align it center. Repeat for multiple columns[2..x].
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        GestureDetector(
-          onTap: () => _updateSize(),
-          child: AnimatedContainer(
-            height: _size,
-            color: Colors.amberAccent,
-            duration: Duration(seconds: 1),
+    ThemeData themeData = Theme.of(context);
+    return Container(
+      // TODO: Change the size in some other way so it fills the container better
+      height: MediaQuery.of(context).size.height - 600,
+      color: themeData.canvasColor,
+      child: Row(
+        children: [
+          // The timer container
+          Container(
+            child: Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Column(children: <Widget>[
+                Expanded(
+                  child: Align(
+                    alignment: FractionalOffset.centerLeft,
+                    child: AspectRatio(
+                      aspectRatio: 1.0,
+                      child: Stack(
+                        children: <Widget>[
+                          IgnorePointer(
+                            ignoring: true,
+                            child: Align(
+                              alignment: FractionalOffset.center,
+                              child: Column(
+                                children: <Widget>[
+                                  Expanded(
+                                      child:
+                                          Image.asset('lib/img/bozjan.jpeg')),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Positioned.fill(
+                            child: AnimatedBuilder(
+                                animation: _controller,
+                                builder: (BuildContext context, Widget child) {
+                                  return new Container(
+                                      child: new CustomPaint(
+                                    painter: new CurtainPainter(
+                                        160, 160 * _controller.value),
+                                  ));
+                                }),
+                          ),
+                          // 3L Patty Icon
+                          Positioned.fill(
+                            child: Container(
+                              margin: EdgeInsets.only(top: 550, left: 210),
+                              child: Align(
+                                alignment: FractionalOffset.topLeft,
+                                child: Material(
+                                  color: Colors.transparent,
+                                  child: FloatingActionButton(
+                                    heroTag: 'StarMob3L',
+                                    backgroundColor:
+                                        Color.fromRGBO(0, 255, 0, .5),
+                                    tooltip: 'Patty',
+                                    child: AnimatedBuilder(
+                                      animation: _controller,
+                                      builder:
+                                          (BuildContext context, Widget child) {
+                                        return new Icon(_controller.isAnimating
+                                            ? Icons.star_border
+                                            : Icons.star);
+                                      },
+                                    ),
+                                    onPressed: () {
+                                      if (_controller.isAnimating) {
+                                        _controller.stop();
+                                      } else {
+                                        _controller.reverse(
+                                            from: _controller.value == 0.0
+                                                ? 1.0
+                                                : _controller.value);
+                                      }
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          // 3L Patty Text
+                          IgnorePointer(
+                            ignoring: true,
+                            child: Container(
+                              margin: EdgeInsets.only(top: 555, left: 270),
+                              child: Align(
+                                alignment: FractionalOffset.topLeft,
+                                child: AnimatedBuilder(
+                                  animation: _controller,
+                                  builder:
+                                      (BuildContext context, Widget child) {
+                                    return new Text(
+                                      '30m',
+                                      style: themeData.textTheme.headline4,
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ]),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
