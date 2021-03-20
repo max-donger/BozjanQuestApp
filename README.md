@@ -1,16 +1,37 @@
 # bozjan_quest_app
 
-A new Flutter project.
+A new Flutter project for bozjan.quest
 
-## Getting Started
+## TODO
 
-This project is a starting point for a Flutter application.
+Forgotten Fragments loot table
+Forgotten Fragment of Compassion - Sample size of 200
+10% Resistance Medkit - 3 star
+20% Lost Arise - 2 star
+35%? Lost cure II - 1 star
+35%? Lost cure IV - 1 star
 
-A few resources to get you started if this is your first Flutter project:
+Forgotten Fragment of Violence - Sample size of 150
+10% Lost Slash - 3 star
+30% Lost Focus - 2 star
+60% Lost Death - 1 star
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Pure Essences seem to increase the effects even more?
+https://www.reddit.com/r/ffxiv/comments/lc2455/psa_pure_essences_buff_certain_lost_actions_quite/
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+TODO
+- Sprite respawn times
+- Explain timer reset when entering Castrum
+- Explain Historian, and Marching Orders buff (adds a special extra buff if you get it). Also I never got Marching Orders for Castrum so far.
+- Lockbox odds for the mount is about 2.5%?
+- Golden mount from delubrum is like what, 10%? maybe 5%?
+- Explain maximizing profit on doing fates, by pulling the 4th legion mobs towards them
+- Dice LB3 is about 20% maybe? How many options are there? I've never gotten doom so far
+
+
+If you haven't registered yet and you try to register you may get this:
+You cannot join a critical engagement with less than 10 seconds remaining before battle.
+Commencing does work.
+
+
+maybe like 7 marching orders now and still no castrum priority
