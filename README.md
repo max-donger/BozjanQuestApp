@@ -66,3 +66,6 @@ maybe like 7 marching orders now and still no castrum priority
 
 
 235 zadnor lockbox, only 1x 3 star (the hair twin)
+
+
+Use Leaflet / Geoserver or something for the map?

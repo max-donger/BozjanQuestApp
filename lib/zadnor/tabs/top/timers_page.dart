@@ -488,7 +488,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
               // 3L Glyptodon Icon
               Positioned.fill(
                 child: Align(
-                  alignment: Alignment(-0.47, -0.36),
+                  alignment: Alignment(-0.32, -0.31),
                   child: Material(
                     color: Colors.transparent,
                     child: FloatingActionButton(
@@ -522,7 +522,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                 child: IgnorePointer(
                   ignoring: true,
                   child: Align(
-                    alignment: Alignment(-0.47, -0.36),
+                    alignment: Alignment(-0.32, -0.31),
                     child: AnimatedBuilder(
                       animation: _controller3L,
                       builder: (BuildContext context, Widget child) {
@@ -538,7 +538,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
               // 3M Molten Scorpion Icon
               Positioned.fill(
                 child: Align(
-                  alignment: Alignment(-0.08, -0.22),
+                  alignment: Alignment(-0.02, -0.18),
                   child: Material(
                     color: Colors.transparent,
                     child: FloatingActionButton(
@@ -572,7 +572,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                 child: IgnorePointer(
                   ignoring: true,
                   child: Align(
-                    alignment: Alignment(-0.08, -0.22),
+                    alignment: Alignment(-0.02, -0.18),
                     child: AnimatedBuilder(
                       animation: _controller3M,
                       builder: (BuildContext context, Widget child) {
@@ -588,7 +588,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
               // 3R Vapula Icon
               Positioned.fill(
                 child: Align(
-                  alignment: Alignment(-0.06, -0.56),
+                  alignment: Alignment(-0.01, -0.50),
                   child: Material(
                     color: Colors.transparent,
                     child: FloatingActionButton(
@@ -622,7 +622,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                 child: IgnorePointer(
                   ignoring: true,
                   child: Align(
-                    alignment: Alignment(-0.06, -0.56),
+                    alignment: Alignment(-0.01, -0.50),
                     child: AnimatedBuilder(
                       animation: _controller3R,
                       builder: (BuildContext context, Widget child) {
@@ -638,7 +638,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
               // 2L Lord Ochu Icon
               Positioned.fill(
                 child: Align(
-                  alignment: Alignment(-0.82, -0.13),
+                  alignment: Alignment(-0.59, -0.09),
                   child: Material(
                     color: Colors.transparent,
                     child: FloatingActionButton(
@@ -672,7 +672,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                 child: IgnorePointer(
                   ignoring: true,
                   child: Align(
-                    alignment: Alignment(-0.82, -0.13),
+                    alignment: Alignment(-0.59, -0.09),
                     child: AnimatedBuilder(
                       animation: _controller2L,
                       builder: (BuildContext context, Widget child) {
@@ -688,7 +688,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
               // 2M Aglaophotis Icon
               Positioned.fill(
                 child: Align(
-                  alignment: Alignment(-0.63, 0.35),
+                  alignment: Alignment(-0.45, 0.37),
                   child: Material(
                     color: Colors.transparent,
                     child: FloatingActionButton(
@@ -722,7 +722,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                 child: IgnorePointer(
                   ignoring: true,
                   child: Align(
-                    alignment: Alignment(-0.63, 0.35),
+                    alignment: Alignment(-0.45, 0.37),
                     child: AnimatedBuilder(
                       animation: _controller2M,
                       builder: (BuildContext context, Widget child) {
@@ -738,7 +738,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
               // 2R Earth Eater Icon
               Positioned.fill(
                 child: Align(
-                  alignment: Alignment(-0.44, 0.48),
+                  alignment: Alignment(-0.30, 0.50),
                   child: Material(
                     color: Colors.transparent,
                     child: FloatingActionButton(
@@ -772,7 +772,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                 child: IgnorePointer(
                   ignoring: true,
                   child: Align(
-                    alignment: Alignment(-0.44, 0.48),
+                    alignment: Alignment(-0.30, 0.50),
                     child: AnimatedBuilder(
                       animation: _controller2R,
                       builder: (BuildContext context, Widget child) {
@@ -788,7 +788,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
               // 1L Stratogryph Icon
               Positioned.fill(
                 child: Align(
-                  alignment: Alignment(-0.23, 0.75),
+                  alignment: Alignment(-0.14, 0.76),
                   child: Material(
                     color: Colors.transparent,
                     child: FloatingActionButton(
@@ -822,7 +822,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                 child: IgnorePointer(
                   ignoring: true,
                   child: Align(
-                    alignment: Alignment(-0.23, 0.75),
+                    alignment: Alignment(-0.14, 0.76),
                     child: AnimatedBuilder(
                       animation: _controller1L,
                       builder: (BuildContext context, Widget child) {
@@ -838,7 +838,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
               // 1M Anancus Icon
               Positioned.fill(
                 child: Align(
-                  alignment: Alignment(0.16, 0.30),
+                  alignment: Alignment(0.16, 0.32),
                   child: Material(
                     color: Colors.transparent,
                     child: FloatingActionButton(
@@ -872,7 +872,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                 child: IgnorePointer(
                   ignoring: true,
                   child: Align(
-                    alignment: Alignment(0.24, 0.22),
+                    alignment: Alignment(0.16, 0.32),
                     child: AnimatedBuilder(
                       animation: _controller1M,
                       builder: (BuildContext context, Widget child) {
@@ -888,7 +888,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
               // 1R Vinegaroon Executioner Icon
               Positioned.fill(
                 child: Align(
-                  alignment: Alignment(0.53, 0.38),
+                  alignment: Alignment(0.45, 0.40),
                   child: Material(
                     color: Colors.transparent,
                     child: FloatingActionButton(
@@ -922,7 +922,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                 child: IgnorePointer(
                   ignoring: true,
                   child: Align(
-                    alignment: Alignment(0.69, 0.34),
+                    alignment: Alignment(0.45, 0.40),
                     child: AnimatedBuilder(
                       animation: _controller1R,
                       builder: (BuildContext context, Widget child) {
