@@ -1,6 +1,8 @@
 # bozjan_quest_app
 
 A new Flutter project for bozjan.quest
+To build a new version type the following in the terminal:
+flutter build web --release
 
 ## TODO
 
@@ -16,8 +18,30 @@ Forgotten Fragment of Violence - Sample size of 150
 30% Lost Focus - 2 star
 60% Lost Death - 1 star
 
+Forgotten Fragment of Support - Sample size of 150
+33% Lost Reflect - 1 star
+33% Lost Stoneskin - 2 star
+33% Lost Bravery - 1 star
+
 Pure Essences seem to increase the effects even more?
 https://www.reddit.com/r/ffxiv/comments/lc2455/psa_pure_essences_buff_certain_lost_actions_quite/
+
+When doing sprites u can reach both Earth Sprites within the 2 min respawn timer.
+Lightning sprites is a 1 minute loss, so not worth it.
+
+--
+
+Rank 4 is second zone
+Rank 8 is third zone
+
+--
+
+Explain how to use Res <pos> to post your map position
+
+--
+
+Bozjan lexicon (abbrev)
+CE/LFG/cluster farming/sprite farming/ fate/ castruml/CLL / Delubrum
 
 TODO
 - Sprite respawn times
@@ -27,7 +51,7 @@ TODO
 - Golden mount from delubrum is like what, 10%? maybe 5%?
 - Explain maximizing profit on doing fates, by pulling the 4th legion mobs towards them
 - Dice LB3 is about 20% maybe? How many options are there? I've never gotten doom so far
-
+- Add reset button to Star mob timers
 
 If you haven't registered yet and you try to register you may get this:
 You cannot join a critical engagement with less than 10 seconds remaining before battle.
@@ -35,3 +59,10 @@ Commencing does work.
 
 
 maybe like 7 marching orders now and still no castrum priority
+
+
+
+/sea to see player list
+
+
+235 zadnor lockbox, only 1x 3 star (the hair twin)

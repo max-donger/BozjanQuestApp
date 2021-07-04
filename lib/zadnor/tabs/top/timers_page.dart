@@ -10,7 +10,7 @@ class TimersPage extends StatelessWidget {
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          CastrumTimer(),
+          DaldriadaTimer(),
           StarMobsTimer(),
           // WeatherTimer(),
         ],
@@ -19,14 +19,16 @@ class TimersPage extends StatelessWidget {
   }
 }
 
-class CastrumTimer extends StatefulWidget {
+class DaldriadaTimer extends StatefulWidget {
   @override
   _CountDownTimerState createState() => _CountDownTimerState();
 }
 
 // TODO: Do you see this AutomaticKeepAliveClientMixin and wantKeepAlive? Apply it everywhere
-class _CountDownTimerState extends State<CastrumTimer>
-    with AutomaticKeepAliveClientMixin<CastrumTimer>, TickerProviderStateMixin {
+class _CountDownTimerState extends State<DaldriadaTimer>
+    with
+        AutomaticKeepAliveClientMixin<DaldriadaTimer>,
+        TickerProviderStateMixin {
   // Keep this tab alive
   @override
   bool get wantKeepAlive => true;
@@ -240,7 +242,7 @@ class _CountDownTimerState extends State<CastrumTimer>
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
                             FloatingActionButton(
-                              heroTag: 'CastrumStartStop',
+                              heroTag: 'DaldriadaStartStop',
                               child: AnimatedBuilder(
                                 animation: _controller,
                                 builder: (BuildContext context, Widget child) {
@@ -274,7 +276,7 @@ class _CountDownTimerState extends State<CastrumTimer>
                 child: Align(
                   alignment: FractionalOffset.center,
                   child: Text(
-                    'Castrum Lacus Litore',
+                    'Daldriada',
                     // style: themeData.textTheme.subtitle1,
                     style: TextStyle(fontSize: 48),
                   ),
@@ -292,7 +294,7 @@ class _CountDownTimerState extends State<CastrumTimer>
                     iconSize: 36,
                     color: Colors.grey,
                     tooltip:
-                        'Castrum always spawns 60 minutes after the last raid closed, or 60 minutes from the start of the Bozjan Southern Front instance',
+                        'Daldriada timer is 60 minutes from start of the instance or the last raid, with reduced time for each Fate/CE cleared. Average is 30 minutes on a full instance.',
                     onPressed: () {},
                   ),
                 ),
@@ -481,17 +483,18 @@ class _StarMobsTimerState extends State<StarMobsTimer>
             children: <Widget>[
               // Background image
               IgnorePointer(
-                  ignoring: true, child: Image.asset('lib/img/bozjan.jpeg')),
-              // 3L Patty Icon
+                  ignoring: true,
+                  child: Image.asset('lib/zadnor/img/zadnor.jpeg')),
+              // 3L Glyptodon Icon
               Positioned.fill(
                 child: Align(
-                  alignment: Alignment(-0.67, -0.21),
+                  alignment: Alignment(-0.47, -0.36),
                   child: Material(
                     color: Colors.transparent,
                     child: FloatingActionButton(
                       heroTag: 'StarMob3L',
                       backgroundColor: Colors.transparent,
-                      tooltip: 'Patty',
+                      tooltip: 'Glyptodon',
                       child: AnimatedBuilder(
                         animation: _controller3L,
                         builder: (BuildContext context, Widget child) {
@@ -514,12 +517,12 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   ),
                 ),
               ),
-              // 3L Patty Text
+              // 3L Glyptodon Text
               Positioned.fill(
                 child: IgnorePointer(
                   ignoring: true,
                   child: Align(
-                    alignment: Alignment(-0.67, -0.21),
+                    alignment: Alignment(-0.47, -0.36),
                     child: AnimatedBuilder(
                       animation: _controller3L,
                       builder: (BuildContext context, Widget child) {
@@ -532,16 +535,16 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   ),
                 ),
               ),
-              // 3M Clingy Clare Icon
+              // 3M Molten Scorpion Icon
               Positioned.fill(
                 child: Align(
-                  alignment: Alignment(-0.21, -0.23),
+                  alignment: Alignment(-0.08, -0.22),
                   child: Material(
                     color: Colors.transparent,
                     child: FloatingActionButton(
                       heroTag: 'StarMob3M',
                       backgroundColor: Colors.transparent,
-                      tooltip: 'Clingy Clare',
+                      tooltip: 'Molten Scorpion',
                       child: AnimatedBuilder(
                         animation: _controller3M,
                         builder: (BuildContext context, Widget child) {
@@ -564,12 +567,12 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   ),
                 ),
               ),
-              // 3M Clingy Clare Text
+              // 3M Molten Scorpion Text
               Positioned.fill(
                 child: IgnorePointer(
                   ignoring: true,
                   child: Align(
-                    alignment: Alignment(-0.21, -0.23),
+                    alignment: Alignment(-0.08, -0.22),
                     child: AnimatedBuilder(
                       animation: _controller3M,
                       builder: (BuildContext context, Widget child) {
@@ -582,16 +585,16 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   ),
                 ),
               ),
-              // 3R Bird of Barathrum Icon
+              // 3R Vapula Icon
               Positioned.fill(
                 child: Align(
-                  alignment: Alignment(0.16, -0.53),
+                  alignment: Alignment(-0.06, -0.56),
                   child: Material(
                     color: Colors.transparent,
                     child: FloatingActionButton(
                       heroTag: 'StarMob3R',
                       backgroundColor: Colors.transparent,
-                      tooltip: 'Bird of Barathrum',
+                      tooltip: 'Vapula',
                       child: AnimatedBuilder(
                         animation: _controller3R,
                         builder: (BuildContext context, Widget child) {
@@ -614,12 +617,12 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   ),
                 ),
               ),
-              // 3R Bird of Barathrum Text
+              // 3R Vapula Text
               Positioned.fill(
                 child: IgnorePointer(
                   ignoring: true,
                   child: Align(
-                    alignment: Alignment(0.16, -0.53),
+                    alignment: Alignment(-0.06, -0.56),
                     child: AnimatedBuilder(
                       animation: _controller3R,
                       builder: (BuildContext context, Widget child) {
@@ -632,16 +635,16 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   ),
                 ),
               ),
-              // 2L Smok Icon
+              // 2L Lord Ochu Icon
               Positioned.fill(
                 child: Align(
-                  alignment: Alignment(-0.34, 0.04),
+                  alignment: Alignment(-0.82, -0.13),
                   child: Material(
                     color: Colors.transparent,
                     child: FloatingActionButton(
                       heroTag: 'StarMob2L',
                       backgroundColor: Colors.transparent,
-                      tooltip: 'Smok',
+                      tooltip: 'Lord Ochu',
                       child: AnimatedBuilder(
                         animation: _controller2L,
                         builder: (BuildContext context, Widget child) {
@@ -664,12 +667,12 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   ),
                 ),
               ),
-              // 2L Smok Text
+              // 2L Lord Ochu Text
               Positioned.fill(
                 child: IgnorePointer(
                   ignoring: true,
                   child: Align(
-                    alignment: Alignment(-0.34, 0.04),
+                    alignment: Alignment(-0.82, -0.13),
                     child: AnimatedBuilder(
                       animation: _controller2L,
                       builder: (BuildContext context, Widget child) {
@@ -682,16 +685,16 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   ),
                 ),
               ),
-              // 2M Viy Icon
+              // 2M Aglaophotis Icon
               Positioned.fill(
                 child: Align(
-                  alignment: Alignment(0.38, -0.10),
+                  alignment: Alignment(-0.63, 0.35),
                   child: Material(
                     color: Colors.transparent,
                     child: FloatingActionButton(
                       heroTag: 'StarMob2M',
                       backgroundColor: Colors.transparent,
-                      tooltip: 'Viy',
+                      tooltip: 'Aglaophotis',
                       child: AnimatedBuilder(
                         animation: _controller2M,
                         builder: (BuildContext context, Widget child) {
@@ -714,12 +717,12 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   ),
                 ),
               ),
-              // 2M Viy Text
+              // 2M Aglaophotis Text
               Positioned.fill(
                 child: IgnorePointer(
                   ignoring: true,
                   child: Align(
-                    alignment: Alignment(0.38, -0.10),
+                    alignment: Alignment(-0.63, 0.35),
                     child: AnimatedBuilder(
                       animation: _controller2M,
                       builder: (BuildContext context, Widget child) {
@@ -732,16 +735,16 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   ),
                 ),
               ),
-              // 2R Psoglav Icon
+              // 2R Earth Eater Icon
               Positioned.fill(
                 child: Align(
-                  alignment: Alignment(0.61, -0.20),
+                  alignment: Alignment(-0.44, 0.48),
                   child: Material(
                     color: Colors.transparent,
                     child: FloatingActionButton(
                       heroTag: 'StarMob2R',
                       backgroundColor: Colors.transparent,
-                      tooltip: 'Psoglav',
+                      tooltip: 'Earth Eater',
                       child: AnimatedBuilder(
                         animation: _controller2R,
                         builder: (BuildContext context, Widget child) {
@@ -764,12 +767,12 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   ),
                 ),
               ),
-              // 2R Psoglav Text
+              // 2R Earth Eater Text
               Positioned.fill(
                 child: IgnorePointer(
                   ignoring: true,
                   child: Align(
-                    alignment: Alignment(0.61, -0.20),
+                    alignment: Alignment(-0.44, 0.48),
                     child: AnimatedBuilder(
                       animation: _controller2R,
                       builder: (BuildContext context, Widget child) {
@@ -782,16 +785,16 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   ),
                 ),
               ),
-              // 1L Tideborn Angel Icon
+              // 1L Stratogryph Icon
               Positioned.fill(
                 child: Align(
-                  alignment: Alignment(-0.06, 0.53),
+                  alignment: Alignment(-0.23, 0.75),
                   child: Material(
                     color: Colors.transparent,
                     child: FloatingActionButton(
                       heroTag: 'StarMob1L',
                       backgroundColor: Colors.transparent,
-                      tooltip: 'Tideborn Angel',
+                      tooltip: 'Stratogryph',
                       child: AnimatedBuilder(
                         animation: _controller1L,
                         builder: (BuildContext context, Widget child) {
@@ -814,12 +817,12 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   ),
                 ),
               ),
-              // 1L Tideborn Angel Text
+              // 1L Stratogryph Text
               Positioned.fill(
                 child: IgnorePointer(
                   ignoring: true,
                   child: Align(
-                    alignment: Alignment(-0.06, 0.53),
+                    alignment: Alignment(-0.23, 0.75),
                     child: AnimatedBuilder(
                       animation: _controller1L,
                       builder: (BuildContext context, Widget child) {
@@ -832,16 +835,16 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   ),
                 ),
               ),
-              // 1M Fern Flower Icon
+              // 1M Anancus Icon
               Positioned.fill(
                 child: Align(
-                  alignment: Alignment(0.24, 0.22),
+                  alignment: Alignment(0.16, 0.30),
                   child: Material(
                     color: Colors.transparent,
                     child: FloatingActionButton(
                       heroTag: 'StarMob1M',
                       backgroundColor: Colors.transparent,
-                      tooltip: 'Fern Flower',
+                      tooltip: 'Anancus',
                       child: AnimatedBuilder(
                         animation: _controller1M,
                         builder: (BuildContext context, Widget child) {
@@ -864,7 +867,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   ),
                 ),
               ),
-              // 1M Fern Flower Text
+              // 1M Anancus Text
               Positioned.fill(
                 child: IgnorePointer(
                   ignoring: true,
@@ -882,16 +885,16 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   ),
                 ),
               ),
-              // 1R Ink Claw Icon
+              // 1R Vinegaroon Executioner Icon
               Positioned.fill(
                 child: Align(
-                  alignment: Alignment(0.69, 0.34),
+                  alignment: Alignment(0.53, 0.38),
                   child: Material(
                     color: Colors.transparent,
                     child: FloatingActionButton(
                       heroTag: 'StarMob1R',
                       backgroundColor: Colors.transparent,
-                      tooltip: 'Ink Claw',
+                      tooltip: 'Vinegaroon Executioner',
                       child: AnimatedBuilder(
                         animation: _controller1R,
                         builder: (BuildContext context, Widget child) {
@@ -914,7 +917,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   ),
                 ),
               ),
-              // 1R Ink Claw Text
+              // 1R Vinegaroon Executioner Text
               Positioned.fill(
                 child: IgnorePointer(
                   ignoring: true,
