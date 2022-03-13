@@ -52,6 +52,7 @@ TODO
 - Explain maximizing profit on doing fates, by pulling the 4th legion mobs towards them
 - Dice LB3 is about 20% maybe? How many options are there? I've never gotten doom so far
 - Add reset button to Star mob timers
+- X Memories, and where to get them
 
 If you haven't registered yet and you try to register you may get this:
 You cannot join a critical engagement with less than 10 seconds remaining before battle.
@@ -69,3 +70,8 @@ maybe like 7 marching orders now and still no castrum priority
 
 
 Use Leaflet / Geoserver or something for the map?
+
+
+Zadnor fates RDM > mammoth > chocobos > golem > bots
+z3 fates reset with rdm, which slows down mamoth?
+for timebomb one u can use lost reflect
