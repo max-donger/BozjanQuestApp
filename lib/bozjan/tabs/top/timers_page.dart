@@ -473,8 +473,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
     ThemeData themeData = Theme.of(context);
     var overlayImages = <OverlayImage>[
       OverlayImage(
-          bounds: LatLngBounds(latLng.LatLng(-1, -1), latLng.LatLng(1, 1)),
-          opacity: 1,
+          bounds: LatLngBounds(latLng.LatLng(-1, -1.5), latLng.LatLng(1, 1)),
           imageProvider: NetworkImage('lib/bozjan/img/bozjan.jpeg')),
     ];
     return FittedBox(
@@ -497,12 +496,26 @@ class _StarMobsTimerState extends State<StarMobsTimer>
               OverlayImageLayerOptions(overlayImages: overlayImages),
               MarkerLayerOptions(
                 markers: [
+                  // Z2 Cyclops
                   Marker(
-                    width: 80.0,
-                    height: 80.0,
-                    point: latLng.LatLng(0.1, 0.1),
+                    width: 40.0,
+                    height: 40.0,
+                    point: latLng.LatLng(0.10, 0.21),
                     builder: (ctx) => Container(
-                      child: FlutterLogo(),
+                      child: Image(
+                        image: NetworkImage('lib/bozjan/img/icon_star-mob.png'),
+                      ),
+                    ),
+                  ),
+                  // Z2 Lion
+                  Marker(
+                    width: 40.0,
+                    height: 40.0,
+                    point: latLng.LatLng(0.18, 0.49),
+                    builder: (ctx) => Container(
+                      child: Image(
+                        image: NetworkImage('lib/bozjan/img/icon_star-mob.png'),
+                      ),
                     ),
                   ),
                 ],
