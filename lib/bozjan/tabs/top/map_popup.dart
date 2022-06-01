@@ -1,17 +1,22 @@
 import 'package:bozjan_quest_app/bozjan/tabs/top/map_page.dart';
+import 'package:bozjan_quest_app/zadnor/tabs/top/timers_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 
-class ExamplePopup extends StatefulWidget {
+class MapPopup extends StatefulWidget {
   final Marker marker;
 
-  ExamplePopup(this.marker, {Key? key}) : super(key: key);
+  MapPopup(this.marker, {Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _ExamplePopupState(marker);
+  State<StatefulWidget> createState() => _MapPopupState(marker);
 }
 
-class _ExamplePopupState extends State<ExamplePopup> {
+class _MapPopupState extends State<MapPopup>
+    with AutomaticKeepAliveClientMixin<MapPopup>, TickerProviderStateMixin {
+  @override
+  bool get wantKeepAlive => true;
+
   final Marker _marker;
   final MarkerData _markerData = new MarkerData();
 
@@ -22,7 +27,7 @@ class _ExamplePopupState extends State<ExamplePopup> {
   ];
   int _currentIcon = 0;
 
-  _ExamplePopupState(this._marker);
+  _MapPopupState(this._marker);
 
   @override
   Widget build(BuildContext context) {
@@ -122,5 +127,68 @@ class MarkerData {
       markerReward = 'Unable to resolve ' + markerKey.toString();
     }
     return markerReward;
+  }
+}
+
+// MapPopupTimer
+class MapPopupTimer extends StatefulWidget {
+  MapPopupTimer({Key? key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => _MapPopupTimerState();
+}
+
+class _MapPopupTimerState extends State<MapPopupTimer>
+    with
+        AutomaticKeepAliveClientMixin<MapPopupTimer>,
+        TickerProviderStateMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  late AnimationController _controller;
+
+  String get timer2M {
+    Duration duration = _controller.duration! * _controller.value;
+    return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 1800),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    ThemeData themeData = Theme.of(context);
+    return Material(
+      color: Colors.transparent,
+      child: FloatingActionButton(
+        heroTag: 'StarMob',
+        backgroundColor: Colors.transparent,
+        child: AnimatedBuilder(
+          animation: _controller,
+          builder: (BuildContext context, Widget? child) {
+            return new Text(
+              timer2M,
+              style: themeData.textTheme.headline5,
+            );
+          },
+        ),
+        onPressed: () {
+          if (_controller.isAnimating) {
+            _controller.stop();
+          } else {
+            _controller.reverse(
+                from: _controller.value == 0.0 ? 1.0 : _controller.value);
+          }
+        },
+      ),
+    );
   }
 }

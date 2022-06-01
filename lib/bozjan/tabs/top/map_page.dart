@@ -7,7 +7,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart' as latLng;
 // import 'custom_popup.dart';
 import 'package:flutter_map_marker_popup/flutter_map_marker_popup.dart';
-import 'example_popup.dart';
+import 'map_popup.dart';
 // import 'package:flutter_map_marker_popup_example/font/accurate_map_icons.dart';
 
 class MapPage extends StatelessWidget {
@@ -32,115 +32,6 @@ class _StarMobsTimerState extends State<StarMobsTimer>
         TickerProviderStateMixin {
   @override
   bool get wantKeepAlive => true;
-
-  // TODO: Put this in lists
-  late AnimationController _controller3L;
-
-  String get timer3L {
-    Duration duration = _controller3L.duration! * _controller3L.value;
-    return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
-  }
-
-  late AnimationController _controller3M;
-
-  String get timer3M {
-    Duration duration = _controller3M.duration! * _controller3M.value;
-    return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
-  }
-
-  late AnimationController _controller3R;
-
-  String get timer3R {
-    Duration duration = _controller3R.duration! * _controller3R.value;
-    return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
-  }
-
-  late AnimationController _controller2L;
-
-  String get timer2L {
-    Duration duration = _controller2L.duration! * _controller2L.value;
-    return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
-  }
-
-  late AnimationController _controller2M;
-
-  String get timer2M {
-    Duration duration = _controller2M.duration! * _controller2M.value;
-    return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
-  }
-
-  late AnimationController _controller2R;
-
-  String get timer2R {
-    Duration duration = _controller2R.duration! * _controller2R.value;
-    return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
-  }
-
-  late AnimationController _controller1L;
-
-  String get timer1L {
-    Duration duration = _controller1L.duration! * _controller1L.value;
-    return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
-  }
-
-  late AnimationController _controller1M;
-
-  String get timer1M {
-    Duration duration = _controller1M.duration! * _controller1M.value;
-    return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
-  }
-
-  late AnimationController _controller1R;
-
-  String get timer1R {
-    Duration duration = _controller1R.duration! * _controller1R.value;
-    return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
-  }
-
-/*
-  // initState
-  @override
-  void initState() {
-    super.initState();
-    _markers = _buildMarkersOnMap();
-    _controller3L = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 1800),
-    );
-    _controller3M = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 1800),
-    );
-    _controller3R = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 1800),
-    );
-    _controller2L = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 1800),
-    );
-    _controller2M = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 1800),
-    );
-    _controller2R = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 1800),
-    );
-    _controller1L = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 1800),
-    );
-    _controller1M = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 1800),
-    );
-    _controller1R = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 1800),
-    );
-  }
-  */
 
   final List<latLng.LatLng> _markerPositions = [
     latLng.LatLng(0.25, 0.42), // Random FATE
@@ -247,8 +138,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
               markers: _markers,
               markerRotateAlignment:
                   PopupMarkerLayerOptions.rotationAlignmentFor(AnchorAlign.top),
-              popupBuilder: (BuildContext context, Marker marker) =>
-                  ExamplePopup(
+              popupBuilder: (BuildContext context, Marker marker) => MapPopup(
                 marker,
               ),
             ),
@@ -269,12 +159,23 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   _markerPositions.indexOf(markerPosition))
               .toString()),
           point: markerPosition,
-          width: 40,
+          width: 110,
           height: 40,
-          builder: (_) => Image.asset(
-            'lib/bozjan/img/icon_exclamation-point.png',
-            width: 49,
-            height: 65,
+          builder: (_) => Row(
+            mainAxisAlignment:
+                MainAxisAlignment.center, // Tweak this for positioning
+            crossAxisAlignment:
+                CrossAxisAlignment.center, // Tweak this for positioning
+            children: [
+              Image.asset(
+                'lib/bozjan/img/icon_exclamation-point.png',
+                width: 49,
+                height: 65,
+              ),
+              Expanded(
+                child: MapPopupTimer(),
+              ),
+            ],
           ),
           anchorPos: AnchorPos.align(AnchorAlign.top),
         ),
