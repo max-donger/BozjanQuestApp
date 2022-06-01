@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import '../../utils/ForecastWeather.dart';
 
 class WeatherPage extends StatelessWidget {
-  const WeatherPage({Key key}) : super(key: key);
+  WeatherPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +30,10 @@ class _WeatherTimerState extends State<WeatherTimer>
   @override
   bool get wantKeepAlive => true;
 
-  AnimationController _controller;
+  late AnimationController _controller;
 
   String get weatherString {
-    Duration duration = _controller.duration * _controller.value;
+    Duration duration = _controller.duration! * _controller.value;
     int currentTime = DateTime.now().millisecondsSinceEpoch;
     int weatherString = forecastWeather(currentTime);
     return 'Weather chance now: ${weatherString.toString()} , DateTimeUnix now: ${(currentTime).toString()}';
@@ -39,7 +41,7 @@ class _WeatherTimerState extends State<WeatherTimer>
 
   // TODO: STILL DO THIS
   String get weatherStringNext {
-    Duration duration = _controller.duration * _controller.value;
+    Duration duration = _controller.duration! * _controller.value;
     int currentTime = DateTime.now().millisecondsSinceEpoch;
     int weatherStringNext = forecastWeather(currentTime);
     return 'Weather chance now: ${weatherStringNext.toString()} , DateTimeUnix now: ${(currentTime).toString()}';

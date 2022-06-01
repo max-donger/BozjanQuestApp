@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class TimersPage extends StatelessWidget {
-  const TimersPage({Key key}) : super(key: key);
+  TimersPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +33,10 @@ class _CountDownTimerState extends State<DaldriadaTimer>
   @override
   bool get wantKeepAlive => true;
 
-  AnimationController _controller;
+  late AnimationController _controller;
 
   String get timerString {
-    Duration duration = _controller.duration * _controller.value;
+    Duration duration = _controller.duration! * _controller.value;
     return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
   }
 
@@ -52,16 +52,16 @@ class _CountDownTimerState extends State<DaldriadaTimer>
   // Method for increment or decrementing the timer minute hand
   void adjustTimerMinuteHand(int minutes) {
     // Prevent incrementing past 99 minutes
-    if (_controller.duration + Duration(minutes: minutes) >=
+    if (_controller.duration! + Duration(minutes: minutes) >=
         Duration(minutes: 100))
       _controller.duration = Duration(minutes: 99, seconds: 0);
     // Prevent decrementing below 0 minutes
-    else if (_controller.duration + Duration(minutes: minutes) <=
+    else if (_controller.duration! + Duration(minutes: minutes) <=
         Duration(minutes: 0, seconds: 0)) {
       _controller.duration = Duration(minutes: 0, seconds: 0);
     } else {
       _controller.duration =
-          _controller.duration + Duration(minutes: minutes, seconds: 0);
+          _controller.duration! + Duration(minutes: minutes, seconds: 0);
     }
     // Reset the animation
     _controller.reset();
@@ -108,7 +108,7 @@ class _CountDownTimerState extends State<DaldriadaTimer>
                         Positioned.fill(
                           child: AnimatedBuilder(
                               animation: _controller,
-                              builder: (BuildContext context, Widget child) {
+                              builder: (BuildContext context, Widget? child) {
                                 return new Container(
                                     child: new CustomPaint(
                                   painter: new CurtainPainter(
@@ -127,7 +127,7 @@ class _CountDownTimerState extends State<DaldriadaTimer>
                                 child: AnimatedBuilder(
                                   animation: _controller,
                                   builder:
-                                      (BuildContext context, Widget child) {
+                                      (BuildContext context, Widget? child) {
                                     return new Icon(Icons.keyboard_arrow_up);
                                   },
                                 ),
@@ -150,7 +150,7 @@ class _CountDownTimerState extends State<DaldriadaTimer>
                                 child: AnimatedBuilder(
                                   animation: _controller,
                                   builder:
-                                      (BuildContext context, Widget child) {
+                                      (BuildContext context, Widget? child) {
                                     return new Icon(Icons.keyboard_arrow_up);
                                   },
                                 ),
@@ -172,7 +172,7 @@ class _CountDownTimerState extends State<DaldriadaTimer>
                                 child: AnimatedBuilder(
                                   animation: _controller,
                                   builder:
-                                      (BuildContext context, Widget child) {
+                                      (BuildContext context, Widget? child) {
                                     return new Icon(Icons.keyboard_arrow_down);
                                   },
                                 ),
@@ -195,7 +195,7 @@ class _CountDownTimerState extends State<DaldriadaTimer>
                                 child: AnimatedBuilder(
                                   animation: _controller,
                                   builder:
-                                      (BuildContext context, Widget child) {
+                                      (BuildContext context, Widget? child) {
                                     return new Icon(Icons.keyboard_arrow_down);
                                   },
                                 ),
@@ -213,7 +213,7 @@ class _CountDownTimerState extends State<DaldriadaTimer>
                             alignment: FractionalOffset.center,
                             child: AnimatedBuilder(
                                 animation: _controller,
-                                builder: (BuildContext context, Widget child) {
+                                builder: (BuildContext context, Widget? child) {
                                   return new Text(
                                     timerString,
                                     style: themeData.textTheme.headline3,
@@ -245,7 +245,7 @@ class _CountDownTimerState extends State<DaldriadaTimer>
                               heroTag: 'DaldriadaStartStop',
                               child: AnimatedBuilder(
                                 animation: _controller,
-                                builder: (BuildContext context, Widget child) {
+                                builder: (BuildContext context, Widget? child) {
                                   return new Icon(_controller.isAnimating
                                       ? Icons.pause
                                       : Icons.play_arrow);
@@ -362,66 +362,66 @@ class _StarMobsTimerState extends State<StarMobsTimer>
   bool get wantKeepAlive => true;
 
   // TODO: Put this in lists
-  AnimationController _controller3L;
+  late AnimationController _controller3L;
 
   String get timer3L {
-    Duration duration = _controller3L.duration * _controller3L.value;
+    Duration duration = _controller3L.duration! * _controller3L.value;
     return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
   }
 
-  AnimationController _controller3M;
+  late AnimationController _controller3M;
 
   String get timer3M {
-    Duration duration = _controller3M.duration * _controller3M.value;
+    Duration duration = _controller3M.duration! * _controller3M.value;
     return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
   }
 
-  AnimationController _controller3R;
+  late AnimationController _controller3R;
 
   String get timer3R {
-    Duration duration = _controller3R.duration * _controller3R.value;
+    Duration duration = _controller3R.duration! * _controller3R.value;
     return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
   }
 
-  AnimationController _controller2L;
+  late AnimationController _controller2L;
 
   String get timer2L {
-    Duration duration = _controller2L.duration * _controller2L.value;
+    Duration duration = _controller2L.duration! * _controller2L.value;
     return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
   }
 
-  AnimationController _controller2M;
+  late AnimationController _controller2M;
 
   String get timer2M {
-    Duration duration = _controller2M.duration * _controller2M.value;
+    Duration duration = _controller2M.duration! * _controller2M.value;
     return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
   }
 
-  AnimationController _controller2R;
+  late AnimationController _controller2R;
 
   String get timer2R {
-    Duration duration = _controller2R.duration * _controller2R.value;
+    Duration duration = _controller2R.duration! * _controller2R.value;
     return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
   }
 
-  AnimationController _controller1L;
+  late AnimationController _controller1L;
 
   String get timer1L {
-    Duration duration = _controller1L.duration * _controller1L.value;
+    Duration duration = _controller1L.duration! * _controller1L.value;
     return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
   }
 
-  AnimationController _controller1M;
+  late AnimationController _controller1M;
 
   String get timer1M {
-    Duration duration = _controller1M.duration * _controller1M.value;
+    Duration duration = _controller1M.duration! * _controller1M.value;
     return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
   }
 
-  AnimationController _controller1R;
+  late AnimationController _controller1R;
 
   String get timer1R {
-    Duration duration = _controller1R.duration * _controller1R.value;
+    Duration duration = _controller1R.duration! * _controller1R.value;
     return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
   }
 
@@ -497,7 +497,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                       tooltip: 'Glyptodon',
                       child: AnimatedBuilder(
                         animation: _controller3L,
-                        builder: (BuildContext context, Widget child) {
+                        builder: (BuildContext context, Widget? child) {
                           return new Icon(_controller3L.isAnimating
                               ? Icons.star_border
                               : Icons.star);
@@ -525,7 +525,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                     alignment: Alignment(-0.32, -0.31),
                     child: AnimatedBuilder(
                       animation: _controller3L,
-                      builder: (BuildContext context, Widget child) {
+                      builder: (BuildContext context, Widget? child) {
                         return new Text(
                           timer3L,
                           style: themeData.textTheme.headline4,
@@ -547,7 +547,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                       tooltip: 'Molten Scorpion',
                       child: AnimatedBuilder(
                         animation: _controller3M,
-                        builder: (BuildContext context, Widget child) {
+                        builder: (BuildContext context, Widget? child) {
                           return new Icon(_controller3M.isAnimating
                               ? Icons.star_border
                               : Icons.star);
@@ -575,7 +575,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                     alignment: Alignment(-0.02, -0.18),
                     child: AnimatedBuilder(
                       animation: _controller3M,
-                      builder: (BuildContext context, Widget child) {
+                      builder: (BuildContext context, Widget? child) {
                         return new Text(
                           timer3M,
                           style: themeData.textTheme.headline4,
@@ -597,7 +597,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                       tooltip: 'Vapula',
                       child: AnimatedBuilder(
                         animation: _controller3R,
-                        builder: (BuildContext context, Widget child) {
+                        builder: (BuildContext context, Widget? child) {
                           return new Icon(_controller3R.isAnimating
                               ? Icons.star_border
                               : Icons.star);
@@ -625,7 +625,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                     alignment: Alignment(-0.01, -0.50),
                     child: AnimatedBuilder(
                       animation: _controller3R,
-                      builder: (BuildContext context, Widget child) {
+                      builder: (BuildContext context, Widget? child) {
                         return new Text(
                           timer3R,
                           style: themeData.textTheme.headline4,
@@ -647,7 +647,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                       tooltip: 'Lord Ochu',
                       child: AnimatedBuilder(
                         animation: _controller2L,
-                        builder: (BuildContext context, Widget child) {
+                        builder: (BuildContext context, Widget? child) {
                           return new Icon(_controller2L.isAnimating
                               ? Icons.star_border
                               : Icons.star);
@@ -675,7 +675,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                     alignment: Alignment(-0.59, -0.09),
                     child: AnimatedBuilder(
                       animation: _controller2L,
-                      builder: (BuildContext context, Widget child) {
+                      builder: (BuildContext context, Widget? child) {
                         return new Text(
                           timer2L,
                           style: themeData.textTheme.headline4,
@@ -697,7 +697,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                       tooltip: 'Aglaophotis',
                       child: AnimatedBuilder(
                         animation: _controller2M,
-                        builder: (BuildContext context, Widget child) {
+                        builder: (BuildContext context, Widget? child) {
                           return new Icon(_controller2M.isAnimating
                               ? Icons.star_border
                               : Icons.star);
@@ -725,7 +725,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                     alignment: Alignment(-0.45, 0.37),
                     child: AnimatedBuilder(
                       animation: _controller2M,
-                      builder: (BuildContext context, Widget child) {
+                      builder: (BuildContext context, Widget? child) {
                         return new Text(
                           timer2M,
                           style: themeData.textTheme.headline4,
@@ -747,7 +747,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                       tooltip: 'Earth Eater',
                       child: AnimatedBuilder(
                         animation: _controller2R,
-                        builder: (BuildContext context, Widget child) {
+                        builder: (BuildContext context, Widget? child) {
                           return new Icon(_controller2R.isAnimating
                               ? Icons.star_border
                               : Icons.star);
@@ -775,7 +775,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                     alignment: Alignment(-0.30, 0.50),
                     child: AnimatedBuilder(
                       animation: _controller2R,
-                      builder: (BuildContext context, Widget child) {
+                      builder: (BuildContext context, Widget? child) {
                         return new Text(
                           timer2R,
                           style: themeData.textTheme.headline4,
@@ -797,7 +797,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                       tooltip: 'Stratogryph',
                       child: AnimatedBuilder(
                         animation: _controller1L,
-                        builder: (BuildContext context, Widget child) {
+                        builder: (BuildContext context, Widget? child) {
                           return new Icon(_controller1L.isAnimating
                               ? Icons.star_border
                               : Icons.star);
@@ -825,7 +825,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                     alignment: Alignment(-0.14, 0.76),
                     child: AnimatedBuilder(
                       animation: _controller1L,
-                      builder: (BuildContext context, Widget child) {
+                      builder: (BuildContext context, Widget? child) {
                         return new Text(
                           timer1L,
                           style: themeData.textTheme.headline4,
@@ -847,7 +847,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                       tooltip: 'Anancus',
                       child: AnimatedBuilder(
                         animation: _controller1M,
-                        builder: (BuildContext context, Widget child) {
+                        builder: (BuildContext context, Widget? child) {
                           return new Icon(_controller1M.isAnimating
                               ? Icons.star_border
                               : Icons.star);
@@ -875,7 +875,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                     alignment: Alignment(0.16, 0.32),
                     child: AnimatedBuilder(
                       animation: _controller1M,
-                      builder: (BuildContext context, Widget child) {
+                      builder: (BuildContext context, Widget? child) {
                         return new Text(
                           timer1M,
                           style: themeData.textTheme.headline4,
@@ -897,7 +897,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                       tooltip: 'Vinegaroon Executioner',
                       child: AnimatedBuilder(
                         animation: _controller1R,
-                        builder: (BuildContext context, Widget child) {
+                        builder: (BuildContext context, Widget? child) {
                           return new Icon(_controller1R.isAnimating
                               ? Icons.star_border
                               : Icons.star);
@@ -925,7 +925,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                     alignment: Alignment(0.45, 0.40),
                     child: AnimatedBuilder(
                       animation: _controller1R,
-                      builder: (BuildContext context, Widget child) {
+                      builder: (BuildContext context, Widget? child) {
                         return new Text(
                           timer1R,
                           style: themeData.textTheme.headline4,

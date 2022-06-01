@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class DuelsPage extends StatelessWidget {
-  const DuelsPage({Key key}) : super(key: key);
+  DuelsPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

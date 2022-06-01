@@ -15,7 +15,9 @@ import 'tabs/bottom/settings_page.dart';
 // void main() => runApp(Bozjan());
 
 class Zadnor extends StatefulWidget {
-  Zadnor({Key key}) : super(key: key);
+  Zadnor({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _MyAppState createState() => _MyAppState();
@@ -55,7 +57,7 @@ class _MyAppState extends State<Zadnor> {
     Color color = Colors.deepOrange;
     // TODO: set the (0 to ) 4 to a list count
     if (_currentMergedIndex <= 4) {
-      color = Colors.grey[600];
+      color = Colors.grey;
     } else {
       color = Colors.lightBlue;
     }

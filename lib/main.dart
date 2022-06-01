@@ -16,7 +16,9 @@ void main() => runApp(
     );
 
 class MyApp extends StatefulWidget {
-  MyApp({Key key}) : super(key: key);
+  MyApp({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _MyAppState createState() => _MyAppState();
@@ -40,7 +42,7 @@ class _MyAppState extends State<MyApp> {
                 color: Colors.white,
               ),
               onPressed: () {
-                scaffoldKey.currentState.openDrawer();
+                scaffoldKey.currentState?.openDrawer();
               },
             ),
             title: Text('bozjan.quest'),
@@ -134,7 +136,7 @@ class _MyAppState extends State<MyApp> {
                     // Update the state of the app
                     // ...
                     // Then close the drawer
-                    scaffoldKey.currentState.openEndDrawer();
+                    scaffoldKey.currentState?.openEndDrawer();
                   },
                 ),
                 ListTile(
@@ -143,7 +145,7 @@ class _MyAppState extends State<MyApp> {
                     // Update the state of the app
                     // ...
                     // Then close the drawer
-                    scaffoldKey.currentState.openEndDrawer();
+                    scaffoldKey.currentState?.openEndDrawer();
                   },
                 ),
                 ListTile(
@@ -152,7 +154,7 @@ class _MyAppState extends State<MyApp> {
                     // Update the state of the app
                     // ...
                     // Then close the drawer
-                    scaffoldKey.currentState.openEndDrawer();
+                    scaffoldKey.currentState?.openEndDrawer();
                   },
                 ),
               ],

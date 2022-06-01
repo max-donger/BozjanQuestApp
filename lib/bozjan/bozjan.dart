@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'tabs/top/learn_page.dart';
 import 'tabs/top/bosses_page.dart';
 import 'tabs/top/duels_page.dart';
-import 'tabs/top/timers_page.dart';
+import 'tabs/top/map_page.dart';
 import 'tabs/top/weather_page.dart';
 
 // Import bottom tabs
@@ -15,7 +15,9 @@ import 'tabs/bottom/settings_page.dart';
 // void main() => runApp(Bozjan());
 
 class Bozjan extends StatefulWidget {
-  Bozjan({Key key}) : super(key: key);
+  Bozjan({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _MyAppState createState() => _MyAppState();
@@ -31,7 +33,7 @@ class _MyAppState extends State<Bozjan> {
     LearnPage(),
     BossesPage(),
     DuelsPage(),
-    TimersPage(),
+    MapPage(),
     WeatherPage(),
     AboutPage(),
     DonatePage(),
@@ -55,7 +57,7 @@ class _MyAppState extends State<Bozjan> {
     Color color = Colors.deepOrange;
     // TODO: set the (0 to ) 4 to a list count
     if (_currentMergedIndex <= 4) {
-      color = Colors.grey[600];
+      color = Colors.grey;
     } else {
       color = Colors.lightBlue;
     }
@@ -84,7 +86,7 @@ class _MyAppState extends State<Bozjan> {
                 Tab(icon: Icon(Icons.menu_book), text: 'Learn'),
                 Tab(icon: Icon(Icons.adb), text: 'Bosses'),
                 Tab(icon: Icon(Icons.people), text: 'Duels'),
-                Tab(icon: Icon(Icons.add_alarm), text: 'Timers'),
+                Tab(icon: Icon(Icons.map), text: 'Map'),
                 Tab(icon: Icon(Icons.cloud), text: 'Weather'),
               ],
               onTap: onTopTabTapped,

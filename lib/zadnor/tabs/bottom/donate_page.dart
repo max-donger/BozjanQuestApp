@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class DonatePage extends StatelessWidget {
-  DonatePage({Key key}) : super(key: key);
+  DonatePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
