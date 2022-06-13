@@ -103,10 +103,24 @@ class MarkerData {
         markerKey.toString().substring(4, markerKey.toString().length - 4);
     if (trimmedMarkerKey == 'Random FATE') {
       markerNameplate = 'a random fate';
+    } else if (trimmedMarkerKey == 'Z1-1') {
+      markerNameplate = 'Tideborn Angel';
+    } else if (trimmedMarkerKey == 'Z1-2') {
+      markerNameplate = 'Fern Flower';
+    } else if (trimmedMarkerKey == 'Z1-3') {
+      markerNameplate = 'Ink Claw';
+    } else if (trimmedMarkerKey == 'Z2-1') {
+      markerNameplate = 'Smok';
     } else if (trimmedMarkerKey == 'Z2-2') {
       markerNameplate = 'Viy';
     } else if (trimmedMarkerKey == 'Z2-3') {
       markerNameplate = 'Psoglav';
+    } else if (trimmedMarkerKey == 'Z3-1') {
+      markerNameplate = 'Patty';
+    } else if (trimmedMarkerKey == 'Z3-2') {
+      markerNameplate = 'Clingy Clare';
+    } else if (trimmedMarkerKey == 'Z3-3') {
+      markerNameplate = 'Bird of Barathrum';
     } else {
       markerNameplate = 'Unable to resolve ' + trimmedMarkerKey.toString();
     }
@@ -117,16 +131,20 @@ class MarkerData {
     var markerReward = 'null';
     var trimmedMarkerKey =
         markerKey.toString().substring(4, markerKey.toString().length - 6);
-    if (trimmedMarkerKey == 'Random FATE') {
+    if (trimmedMarkerKey == 'Random FA') {
+      // Fix me
       markerReward = 'A lootbox';
     } else if (trimmedMarkerKey == 'Z1') {
-      markerReward = '9-20 Forgotten Fragments of Ingenuity';
+      markerReward = '9-20 Forgotten Fragments of Caution';
     } else if (trimmedMarkerKey == 'Z2') {
       markerReward = '9-20 Forgotten Fragments of Ingenuity';
     } else if (trimmedMarkerKey == 'Z3') {
-      markerReward = '9-20 Forgotten Fragments of Ingenuity';
+      markerReward = '9-20 Forgotten Fragments of Violence';
     } else {
-      markerReward = 'Unable to resolve ' + markerKey.toString();
+      markerReward = 'Unable to resolve ' +
+          markerKey.toString() +
+          'trimmed to ' +
+          trimmedMarkerKey;
     }
     return markerReward;
   }

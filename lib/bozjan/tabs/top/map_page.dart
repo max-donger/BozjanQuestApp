@@ -35,8 +35,15 @@ class _StarMobsTimerState extends State<StarMobsTimer>
 
   final List<latLng.LatLng> _markerPositions = [
     latLng.LatLng(0.25, 0.42), // Random FATE
-    latLng.LatLng(0.09, 0.21), // Z2 Cyclops
-    latLng.LatLng(0.18, 0.49), // Z2 Lion
+    latLng.LatLng(-0.50, -0.34), // Z1-1 Tideborn Angel
+    latLng.LatLng(-0.22, 0.03), // Z1-2 Fern Flower
+    latLng.LatLng(-0.35, 0.57), // Z1-3 Ink Claw
+    latLng.LatLng(-0.04, -0.66), // Z2-1 Smok
+    latLng.LatLng(0.09, 0.21), // Z2-2 Viy
+    latLng.LatLng(0.18, 0.49), // Z2-3 Psoglav
+    latLng.LatLng(0.22, -1.06), // Z3-1 Patty
+    latLng.LatLng(0.22, -0.50), // Z3-2 Clingy Clare
+    latLng.LatLng(0.52, -0.08), // Z3-3 Bird of Barathrum
   ];
 
   /// Used to trigger showing/hiding of popups.
