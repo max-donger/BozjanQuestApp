@@ -181,7 +181,12 @@ class _StarMobsTimerState extends State<StarMobsTimer>
               ),
               Align(
                 alignment: Alignment(2.25, 0),
-                child: MapPopupTimer(),
+                child: MapPopupTimer(this
+                    ._markerId
+                    .where((markertext) =>
+                        _markerId.indexOf(markertext) ==
+                        _markerPositions.indexOf(markerPosition))
+                    .toString()),
               ),
             ],
           ),
@@ -199,7 +204,6 @@ class _StarMobsTimerState extends State<StarMobsTimer>
 
   // Get the marker Icon
   getMarkerIcon(markerKey) {
-    print(markerKey);
     var markerIcon = 'null';
     var trimmedMarkerKey =
         markerKey.toString().substring(1, markerKey.toString().length - 1);

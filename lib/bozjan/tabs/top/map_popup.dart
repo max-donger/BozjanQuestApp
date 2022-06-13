@@ -128,14 +128,32 @@ class MarkerData {
     }
     return markerReward;
   }
+
+  getMarkerTimer(markerKey) {
+    print(markerKey);
+    var markerSpawnCooldown = 0;
+    var trimmedMarkerKey =
+        markerKey.toString().substring(1, markerKey.toString().length - 1);
+    if (trimmedMarkerKey == 'Random FATE') {
+      markerSpawnCooldown = 3600; // 60 minutes
+    } else if (trimmedMarkerKey == 'Z2-2') {
+      markerSpawnCooldown = 1800; // 30 minutes
+    } else if (trimmedMarkerKey == 'Z2-3') {
+      markerSpawnCooldown = 1800; // 30 minutes
+    } else {
+      print('Failed to get marker spawn cooldown for: ' + markerKey);
+    }
+    return markerSpawnCooldown;
+  }
 }
 
 // MapPopupTimer
 class MapPopupTimer extends StatefulWidget {
-  MapPopupTimer({Key? key}) : super(key: key);
+  final String marker;
+  MapPopupTimer(this.marker, {Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _MapPopupTimerState();
+  State<StatefulWidget> createState() => _MapPopupTimerState(marker);
 }
 
 class _MapPopupTimerState extends State<MapPopupTimer>
@@ -145,9 +163,14 @@ class _MapPopupTimerState extends State<MapPopupTimer>
   @override
   bool get wantKeepAlive => true;
 
+  final String _marker;
+  final MarkerData _markerData = new MarkerData();
+
+  _MapPopupTimerState(this._marker);
+
   late AnimationController _controller;
 
-  String get timer2M {
+  String get timer {
     Duration duration = _controller.duration! * _controller.value;
     return '${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
   }
@@ -158,7 +181,7 @@ class _MapPopupTimerState extends State<MapPopupTimer>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1800),
+      duration: Duration(seconds: _markerData.getMarkerTimer(_marker)),
     );
   }
 
@@ -177,7 +200,7 @@ class _MapPopupTimerState extends State<MapPopupTimer>
           animation: _controller,
           builder: (BuildContext context, Widget? child) {
             return new Text(
-              timer2M,
+              timer,
               style: themeData.textTheme.headline6,
             );
           },
