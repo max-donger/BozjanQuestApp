@@ -159,7 +159,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   _markerPositions.indexOf(markerPosition))
               .toString()),
           point: markerPosition,
-          width: 100,
+          width: 160,
           height: 65,
           builder: (_) => Stack(
             alignment: Alignment.center,
@@ -180,7 +180,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                 ),
               ),
               Align(
-                alignment: Alignment(2.25, 0),
+                alignment: Alignment(1, 0),
                 child: MapPopupTimer(this
                     ._markerId
                     .where((markertext) =>
@@ -198,8 +198,15 @@ class _StarMobsTimerState extends State<StarMobsTimer>
 
   final List<String> _markerId = [
     'Random FATE', // Random FATE
-    'Z2-2', // Z2 Cyclops
-    'Z2-3', // Z2 Lion
+    'Z1-1', // Tideborn Angel
+    'Z1-2', // Fern Flower
+    'Z1-3', // Ink Claw
+    'Z2-1', // Smok
+    'Z2-2', // Viy
+    'Z2-3', // Psoglav
+    'Z3-1', // Patty
+    'Z3-2', // Clingy Clare
+    'Z3-3', // Bird of Barathrum
   ];
 
   // Get the marker Icon
@@ -209,12 +216,8 @@ class _StarMobsTimerState extends State<StarMobsTimer>
         markerKey.toString().substring(1, markerKey.toString().length - 1);
     if (trimmedMarkerKey == 'Random FATE') {
       markerIcon = 'lib/bozjan/img/icon_exclamation-point.png';
-    } else if (trimmedMarkerKey == 'Z2-2') {
-      markerIcon = 'lib/bozjan/img/icon_star-mob.png';
-    } else if (trimmedMarkerKey == 'Z2-3') {
-      markerIcon = 'lib/bozjan/img/icon_star-mob.png';
     } else {
-      markerIcon = 'lib/bozjan/img/icon_error.png';
+      markerIcon = 'lib/bozjan/img/icon_star-mob.png';
     }
     return markerIcon;
   }

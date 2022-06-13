@@ -116,12 +116,14 @@ class MarkerData {
   getMarkerReward(markerKey) {
     var markerReward = 'null';
     var trimmedMarkerKey =
-        markerKey.toString().substring(4, markerKey.toString().length - 4);
+        markerKey.toString().substring(4, markerKey.toString().length - 6);
     if (trimmedMarkerKey == 'Random FATE') {
       markerReward = 'A lootbox';
-    } else if (trimmedMarkerKey == 'Z2-2') {
+    } else if (trimmedMarkerKey == 'Z1') {
       markerReward = '9-20 Forgotten Fragments of Ingenuity';
-    } else if (trimmedMarkerKey == 'Z2-3') {
+    } else if (trimmedMarkerKey == 'Z2') {
+      markerReward = '9-20 Forgotten Fragments of Ingenuity';
+    } else if (trimmedMarkerKey == 'Z3') {
       markerReward = '9-20 Forgotten Fragments of Ingenuity';
     } else {
       markerReward = 'Unable to resolve ' + markerKey.toString();
@@ -135,13 +137,9 @@ class MarkerData {
     var trimmedMarkerKey =
         markerKey.toString().substring(1, markerKey.toString().length - 1);
     if (trimmedMarkerKey == 'Random FATE') {
-      markerSpawnCooldown = 3600; // 60 minutes
-    } else if (trimmedMarkerKey == 'Z2-2') {
-      markerSpawnCooldown = 1800; // 30 minutes
-    } else if (trimmedMarkerKey == 'Z2-3') {
-      markerSpawnCooldown = 1800; // 30 minutes
+      markerSpawnCooldown = 3600; // 60 minutes - Fates / CE
     } else {
-      print('Failed to get marker spawn cooldown for: ' + markerKey);
+      markerSpawnCooldown = 1800; // 30 minutes - Star mobs
     }
     return markerSpawnCooldown;
   }
@@ -192,7 +190,7 @@ class _MapPopupTimerState extends State<MapPopupTimer>
     return Material(
       color: Colors.transparent,
       child: FloatingActionButton(
-        heroTag: 'StarMob',
+        heroTag: 'StarMob', // TODO: Edit me
         backgroundColor: Colors.transparent,
         hoverColor: Colors.white,
         shape: RoundedRectangleBorder(),
