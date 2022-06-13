@@ -100,7 +100,6 @@ class _StarMobsTimerState extends State<StarMobsTimer>
     );
   }
 */
-
   // Build the Map
   @override
   Widget build(BuildContext context) {
@@ -119,7 +118,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
         options: MapOptions(
           crs: CrsSimple(),
           center: latLng.LatLng(0, 0),
-          bounds: LatLngBounds(latLng.LatLng(-1, -1), latLng.LatLng(1, 1)),
+          bounds: LatLngBounds(latLng.LatLng(-1, -1.5), latLng.LatLng(1, 1)),
           minZoom:
               1, // Ensures the map text stays crisp, but prevents zooming out further
           maxZoom: 2.5,
@@ -137,7 +136,8 @@ class _StarMobsTimerState extends State<StarMobsTimer>
               popupController: _popupLayerController,
               markers: _markers,
               markerRotateAlignment:
-                  PopupMarkerLayerOptions.rotationAlignmentFor(AnchorAlign.top),
+                  PopupMarkerLayerOptions.rotationAlignmentFor(
+                      AnchorAlign.center),
               popupBuilder: (BuildContext context, Marker marker) => MapPopup(
                 marker,
               ),
@@ -159,25 +159,27 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                   _markerPositions.indexOf(markerPosition))
               .toString()),
           point: markerPosition,
-          width: 110,
-          height: 40,
-          builder: (_) => Row(
-            mainAxisAlignment:
-                MainAxisAlignment.center, // Tweak this for positioning
-            crossAxisAlignment:
-                CrossAxisAlignment.center, // Tweak this for positioning
+          width: 100,
+          height: 65,
+          builder: (_) => Stack(
+            alignment: Alignment.center,
             children: [
-              Image.asset(
-                'lib/bozjan/img/icon_exclamation-point.png',
-                width: 49,
-                height: 65,
+              Align(
+                alignment: Alignment.center,
+                child: Image.asset(
+                  'lib/bozjan/img/icon_exclamation-point.png',
+                  width: 50,
+                  height: 65,
+                ),
               ),
-              Expanded(
+              Align(
+                alignment: Alignment(2.25, 0),
                 child: MapPopupTimer(),
               ),
             ],
           ),
-          anchorPos: AnchorPos.align(AnchorAlign.top),
+          anchorPos:
+              AnchorPos.align(AnchorAlign.center), // Tweak this for positioning
         ),
       )
       .toList();

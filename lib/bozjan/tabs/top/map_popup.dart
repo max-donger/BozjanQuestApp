@@ -120,9 +120,9 @@ class MarkerData {
     if (trimmedMarkerKey == 'Random FATE') {
       markerReward = 'A lootbox';
     } else if (trimmedMarkerKey == 'Z2-2') {
-      markerReward = '0-19 Forgotten Fragments of Ingenuity';
+      markerReward = '9-20 Forgotten Fragments of Ingenuity';
     } else if (trimmedMarkerKey == 'Z2-3') {
-      markerReward = '0-19 Forgotten Fragments of Ingenuity';
+      markerReward = '9-20 Forgotten Fragments of Ingenuity';
     } else {
       markerReward = 'Unable to resolve ' + markerKey.toString();
     }
@@ -171,12 +171,14 @@ class _MapPopupTimerState extends State<MapPopupTimer>
       child: FloatingActionButton(
         heroTag: 'StarMob',
         backgroundColor: Colors.transparent,
+        hoverColor: Colors.white,
+        shape: RoundedRectangleBorder(),
         child: AnimatedBuilder(
           animation: _controller,
           builder: (BuildContext context, Widget? child) {
             return new Text(
               timer2M,
-              style: themeData.textTheme.headline5,
+              style: themeData.textTheme.headline6,
             );
           },
         ),
