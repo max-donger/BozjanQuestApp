@@ -84,10 +84,10 @@ class _MyAppState extends State<Bozjan> {
             bottom: TabBar(
               tabs: [
                 Tab(icon: Icon(Icons.menu_book), text: 'Learn'),
-                Tab(icon: Icon(Icons.adb), text: 'Bosses'),
+                Tab(icon: Icon(Icons.adb), text: 'Boss'),
                 Tab(icon: Icon(Icons.people), text: 'Duels'),
                 Tab(icon: Icon(Icons.map), text: 'Map'),
-                Tab(icon: Icon(Icons.cloud), text: 'Weather'),
+                Tab(icon: Icon(Icons.cloud), text: 'Sprite'),
               ],
               onTap: onTopTabTapped,
               indicatorColor: topBarIndicatorColor(),
