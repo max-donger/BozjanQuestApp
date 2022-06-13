@@ -34,7 +34,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
   bool get wantKeepAlive => true;
 
   final List<latLng.LatLng> _markerPositions = [
-    latLng.LatLng(0.25, 0.42), // Random FATE
+    latLng.LatLng(0.52, -0.40), // Random FATE
     latLng.LatLng(-0.50, -0.34), // Z1-1 Tideborn Angel
     latLng.LatLng(-0.22, 0.03), // Z1-2 Fern Flower
     latLng.LatLng(-0.35, 0.57), // Z1-3 Ink Claw
