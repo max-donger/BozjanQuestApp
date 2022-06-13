@@ -1,65 +1,32 @@
 import 'package:flutter/material.dart';
 
-// Import top tabs
-import 'tabs/top/learn_page.dart';
-import 'tabs/top/bosses_page.dart';
-import 'tabs/top/duels_page.dart';
-import 'tabs/top/timers_page.dart';
-import 'tabs/top/maps_page.dart';
+// Import pages
+import 'bozjan/bozjan.dart';
+import 'zadnor/zadnor.dart';
 
 // Import bottom tabs
-import 'tabs/bottom/about_page.dart';
+/* import 'tabs/bottom/about_page.dart';
 import 'tabs/bottom/donate_page.dart';
-import 'tabs/bottom/settings_page.dart';
+import 'tabs/bottom/settings_page.dart'; */
 
-void main() => runApp(MyApp());
+void main() => runApp(
+      MaterialApp(
+        home: MyApp(),
+      ),
+    );
 
 class MyApp extends StatefulWidget {
-  MyApp({Key key}) : super(key: key);
+  MyApp({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  int _currentTopIndex = 0;
-  int _currentBotIndex = 0;
-  int _currentMergedIndex = 0;
-
-  final List<Widget> _children = [
-    LearnPage(),
-    BossesPage(),
-    DuelsPage(),
-    TimersPage(),
-    MapsPage(),
-    AboutPage(),
-    DonatePage(),
-    SettingsPage(),
-  ];
-
-  // Hide the topbar indicator color if the bottom navigation bar is used
-  Color topBarIndicatorColor() {
-    Color color = Colors.deepOrange;
-    // TODO: set the 5 to a list count
-    if (_currentMergedIndex >= 5) {
-      color = Colors.transparent;
-    } else {
-      color = Colors.white;
-    }
-    return color;
-  }
-
-  // Hide the bottombar selectedItemColor if the top navigation bar is used
-  Color bottomBarIndicatorColor() {
-    Color color = Colors.deepOrange;
-    // TODO: set the (0 to ) 4 to a list count
-    if (_currentMergedIndex <= 4) {
-      color = Colors.grey[600];
-    } else {
-      color = Colors.lightBlue;
-    }
-    return color;
-  }
+  // Set a key so it can be used as context (to call the map Drawer)
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -67,25 +34,66 @@ class _MyAppState extends State<MyApp> {
       home: DefaultTabController(
         length: 5,
         child: Scaffold(
+          key: scaffoldKey,
           appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(
+                Icons.menu,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                scaffoldKey.currentState?.openDrawer();
+              },
+            ),
             title: Text('bozjan.quest'),
-            bottom: TabBar(
-              tabs: [
-                Tab(icon: Icon(Icons.menu_book), text: 'Learn'),
-                Tab(icon: Icon(Icons.adb), text: 'Bosses'),
-                Tab(icon: Icon(Icons.people), text: 'Duels'),
-                Tab(icon: Icon(Icons.add_alarm), text: 'Timers'),
-                Tab(icon: Icon(Icons.map), text: 'Maps'),
+          ),
+          body: Container(
+            padding: const EdgeInsets.all(50.0),
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  width: double.infinity,
+                  height: 100,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: const Text('How to unlock'),
+                  ),
+                ),
+                const SizedBox(height: 30),
+                SizedBox(
+                  width: double.infinity,
+                  height: 100,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Bozjan()),
+                      );
+                    },
+                    child: const Text('Explore Bozjan Southern Front'),
+                  ),
+                ),
+                const SizedBox(height: 30),
+                SizedBox(
+                  width: double.infinity,
+                  height: 100,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Zadnor()),
+                      );
+                    },
+                    child: const Text('Explore Zadnor'),
+                  ),
+                ),
               ],
-              onTap: onTopTabTapped,
-              indicatorColor: topBarIndicatorColor(),
             ),
           ),
-          body: _children[_currentMergedIndex],
-          bottomNavigationBar: BottomNavigationBar(
-            onTap: onBotTabTapped,
-            currentIndex: _currentBotIndex,
-            selectedItemColor: bottomBarIndicatorColor(),
+          /* bottomNavigationBar: BottomNavigationBar(
+            onTap: (onBotTabTapped),
+            // selectedItemColor: bottomBarIndicatorColor(),
+            // color = Colors.grey[600]; or color = Colors.lightBlue; or Color color = Colors.deepOrange;
             unselectedFontSize: 14,
             items: [
               new BottomNavigationBarItem(
@@ -101,29 +109,59 @@ class _MyAppState extends State<MyApp> {
                 label: 'Settings',
               ),
             ],
+          ), */
+          drawer: Drawer(
+            // Add a ListView to the drawer. This ensures the user can scroll
+            // through the options in the drawer if there isn't enough vertical
+            // space to fit everything.
+            child: ListView(
+              // Important: Remove any padding from the ListView.
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                  ),
+                  child: Text(
+                    'Pages',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  title: Text('How to unlock'),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                    // Then close the drawer
+                    scaffoldKey.currentState?.openEndDrawer();
+                  },
+                ),
+                ListTile(
+                  title: Text('Bozjan Southern Front'),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                    // Then close the drawer
+                    scaffoldKey.currentState?.openEndDrawer();
+                  },
+                ),
+                ListTile(
+                  title: Text('Zadnor'),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                    // Then close the drawer
+                    scaffoldKey.currentState?.openEndDrawer();
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
-    );
-  }
-
-  void onTopTabTapped(int index) {
-    setState(
-      () {
-        _currentTopIndex = index;
-        _currentMergedIndex = (_currentTopIndex);
-        _currentBotIndex = 0; // Set the bot index back to Home
-      },
-    );
-  }
-
-  void onBotTabTapped(int index) {
-    setState(
-      () {
-        _currentBotIndex = index;
-        // TODO: set the 5 to a list count
-        _currentMergedIndex = (_currentBotIndex + 5);
-      },
     );
   }
 }
