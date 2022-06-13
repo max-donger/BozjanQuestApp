@@ -153,9 +153,9 @@ class _StarMobsTimerState extends State<StarMobsTimer>
       .map(
         (markerPosition) => Marker(
           //           key: Key(_markerPositions.indexOf(markerPosition).toString()),
-          key: Key(_markerText
+          key: Key(_markerId
               .where((markertext) =>
-                  _markerText.indexOf(markertext) ==
+                  _markerId.indexOf(markertext) ==
                   _markerPositions.indexOf(markerPosition))
               .toString()),
           point: markerPosition,
@@ -167,7 +167,14 @@ class _StarMobsTimerState extends State<StarMobsTimer>
               Align(
                 alignment: Alignment.center,
                 child: Image.asset(
-                  'lib/bozjan/img/icon_exclamation-point.png',
+                  getMarkerIcon(
+                    this
+                        ._markerId
+                        .where((markertext) =>
+                            _markerId.indexOf(markertext) ==
+                            _markerPositions.indexOf(markerPosition))
+                        .toString(),
+                  ),
                   width: 50,
                   height: 65,
                 ),
@@ -184,9 +191,27 @@ class _StarMobsTimerState extends State<StarMobsTimer>
       )
       .toList();
 
-  final List<String> _markerText = [
+  final List<String> _markerId = [
     'Random FATE', // Random FATE
     'Z2-2', // Z2 Cyclops
     'Z2-3', // Z2 Lion
   ];
+
+  // Get the marker Icon
+  getMarkerIcon(markerKey) {
+    print(markerKey);
+    var markerIcon = 'null';
+    var trimmedMarkerKey =
+        markerKey.toString().substring(1, markerKey.toString().length - 1);
+    if (trimmedMarkerKey == 'Random FATE') {
+      markerIcon = 'lib/bozjan/img/icon_exclamation-point.png';
+    } else if (trimmedMarkerKey == 'Z2-2') {
+      markerIcon = 'lib/bozjan/img/icon_star-mob.png';
+    } else if (trimmedMarkerKey == 'Z2-3') {
+      markerIcon = 'lib/bozjan/img/icon_star-mob.png';
+    } else {
+      markerIcon = 'lib/bozjan/img/icon_error.png';
+    }
+    return markerIcon;
+  }
 }
