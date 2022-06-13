@@ -1,8 +1,4 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'dart:math' as math;
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart' as latLng;
 // import 'custom_popup.dart';
@@ -115,7 +111,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
     var overlayImages = <OverlayImage>[
       OverlayImage(
           bounds: LatLngBounds(latLng.LatLng(-1, -1.5), latLng.LatLng(1, 1)),
-          imageProvider: NetworkImage('lib/bozjan/img/bozjan.jpeg')),
+          imageProvider: NetworkImage('assets/lib/bozjan/img/bozjan.jpeg')),
     ];
     return Container(
       height: MediaQuery.of(context).size.height,

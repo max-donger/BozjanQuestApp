@@ -150,7 +150,6 @@ class MarkerData {
   }
 
   getMarkerTimer(markerKey) {
-    print(markerKey);
     var markerSpawnCooldown = 0;
     var trimmedMarkerKey =
         markerKey.toString().substring(1, markerKey.toString().length - 1);
