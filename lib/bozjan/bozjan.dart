@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'tabs/top/learn_page.dart';
 import 'tabs/top/bosses_page.dart';
 import 'tabs/top/duels_page.dart';
-import 'tabs/top/map_page.dart';
+// import 'tabs/top/map_page.dart';
 import 'tabs/top/weather_page.dart';
 
 // Import bottom tabs
@@ -33,7 +33,7 @@ class _MyAppState extends State<Bozjan> {
     LearnPage(),
     BossesPage(),
     DuelsPage(),
-    MapPage(),
+    // MapPage(),
     WeatherPage(),
     AboutPage(),
     DonatePage(),

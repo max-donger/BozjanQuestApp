@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 
 class TimersPage extends StatelessWidget {
   TimersPage({Key? key}) : super(key: key);
@@ -216,7 +215,7 @@ class _CountDownTimerState extends State<DaldriadaTimer>
                                 builder: (BuildContext context, Widget? child) {
                                   return new Text(
                                     timerString,
-                                    style: themeData.textTheme.headline3,
+                                    style: themeData.textTheme.displaySmall,
                                   );
                                 }),
                           ),
@@ -528,7 +527,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                       builder: (BuildContext context, Widget? child) {
                         return new Text(
                           timer3L,
-                          style: themeData.textTheme.headline4,
+                          style: themeData.textTheme.headlineMedium,
                         );
                       },
                     ),
@@ -578,7 +577,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                       builder: (BuildContext context, Widget? child) {
                         return new Text(
                           timer3M,
-                          style: themeData.textTheme.headline4,
+                          style: themeData.textTheme.headlineMedium,
                         );
                       },
                     ),
@@ -628,7 +627,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                       builder: (BuildContext context, Widget? child) {
                         return new Text(
                           timer3R,
-                          style: themeData.textTheme.headline4,
+                          style: themeData.textTheme.headlineMedium,
                         );
                       },
                     ),
@@ -678,7 +677,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                       builder: (BuildContext context, Widget? child) {
                         return new Text(
                           timer2L,
-                          style: themeData.textTheme.headline4,
+                          style: themeData.textTheme.headlineMedium,
                         );
                       },
                     ),
@@ -728,7 +727,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                       builder: (BuildContext context, Widget? child) {
                         return new Text(
                           timer2M,
-                          style: themeData.textTheme.headline4,
+                          style: themeData.textTheme.headlineMedium,
                         );
                       },
                     ),
@@ -778,7 +777,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                       builder: (BuildContext context, Widget? child) {
                         return new Text(
                           timer2R,
-                          style: themeData.textTheme.headline4,
+                          style: themeData.textTheme.headlineMedium,
                         );
                       },
                     ),
@@ -828,7 +827,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                       builder: (BuildContext context, Widget? child) {
                         return new Text(
                           timer1L,
-                          style: themeData.textTheme.headline4,
+                          style: themeData.textTheme.headlineMedium,
                         );
                       },
                     ),
@@ -878,7 +877,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                       builder: (BuildContext context, Widget? child) {
                         return new Text(
                           timer1M,
-                          style: themeData.textTheme.headline4,
+                          style: themeData.textTheme.headlineMedium,
                         );
                       },
                     ),
@@ -928,7 +927,7 @@ class _StarMobsTimerState extends State<StarMobsTimer>
                       builder: (BuildContext context, Widget? child) {
                         return new Text(
                           timer1R,
-                          style: themeData.textTheme.headline4,
+                          style: themeData.textTheme.headlineMedium,
                         );
                       },
                     ),
