@@ -3,11 +3,7 @@ import 'package:provider/provider.dart';
 import '../enums.dart';
 import '../providers/page_notifier.dart';
 
-// Import pages
 import '../bozjan/bozjan.dart';
-import '../drs/drs.dart';
-
-import '../widgets/nav_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

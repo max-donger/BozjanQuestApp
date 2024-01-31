@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../enums.dart';
 import '../providers/page_notifier.dart';
 
+/*
 // Import top tabs
 import '../drs/tabs/top/learn_page.dart';
 import '../drs/tabs/top/bosses_page.dart';
@@ -12,6 +13,7 @@ import '../drs/tabs/top/holster_page.dart';
 // Import bottom tabs
 import '../drs/tabs/bottom/about_page.dart';
 import '../drs/tabs/bottom/settings_page.dart';
+*/
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});

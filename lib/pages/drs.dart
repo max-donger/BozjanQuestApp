@@ -3,11 +3,6 @@ import 'package:provider/provider.dart';
 import '../enums.dart';
 import '../providers/page_notifier.dart';
 
-// Import pages
-import '../bozjan/bozjan.dart';
-import '../drs/drs.dart';
-
-import '../widgets/nav_bar.dart';
 import '../widgets/holster/server.dart';
 import '../widgets/holster/rank.dart';
 

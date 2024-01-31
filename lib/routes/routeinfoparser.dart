@@ -3,13 +3,13 @@ import '../enums.dart';
 import 'routes.dart';
 
 //This holds an unknown path typed into the uri
-String? _unknownPath;
+Uri? _unknownPath;
 
 class AppRouteInformationParser extends RouteInformationParser<AppRoute> {
   @override
   Future<AppRoute> parseRouteInformation(
       RouteInformation routeInformation) async {
-    final uri = Uri.parse(routeInformation.location!);
+    final uri = routeInformation.uri;
 
     if (uri.pathSegments.isEmpty) {
       return AppRoute.home();
@@ -17,7 +17,7 @@ class AppRouteInformationParser extends RouteInformationParser<AppRoute> {
 
     //If path includes more than one segement, go to 404
     if (uri.pathSegments.length > 1) {
-      _unknownPath = routeInformation.location;
+      _unknownPath = routeInformation.uri;
       return AppRoute.unknown();
     }
 
@@ -33,7 +33,7 @@ class AppRouteInformationParser extends RouteInformationParser<AppRoute> {
       }
     }
 
-    _unknownPath = uri.path;
+    _unknownPath = uri;
     return AppRoute.unknown();
   }
 
@@ -49,14 +49,14 @@ class AppRouteInformationParser extends RouteInformationParser<AppRoute> {
     }
 
     if (configuration.isUnknown) {
-      return RouteInformation(location: _unknownPath);
+      return RouteInformation(uri: _unknownPath);
     }
 
-    return const RouteInformation(location: "/");
+    return RouteInformation(uri: Uri.parse("/"));
   }
 
 //Get Route Information depending on the PageName passed
   RouteInformation _getRouteInformation(String page) {
-    return RouteInformation(location: "/$page");
+    return RouteInformation(uri: Uri.parse('/$page'));
   }
 }
