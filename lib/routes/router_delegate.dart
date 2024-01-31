@@ -69,6 +69,10 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
       _updateRoute(page: PageName.drs);
     }
 
+    if (configuration.isHolster) {
+      _updateRoute(page: PageName.holster);
+    }
+
     if (configuration.isHome) {
       _updateRoute(page: PageName.home);
     }

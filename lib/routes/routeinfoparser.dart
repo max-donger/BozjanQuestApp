@@ -27,10 +27,8 @@ class AppRouteInformationParser extends RouteInformationParser<AppRoute> {
       }
     }
 
-    if (uri.pathSegments.length == 1) {
-      if (uri.pathSegments.first == PageName.holster.name) {
-        return AppRoute.holster();
-      }
+    if (uri.pathSegments.first == PageName.holster.name) {
+      return AppRoute.holster();
     }
 
     _unknownPath = uri;
