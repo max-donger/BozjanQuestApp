@@ -1,3 +1,5 @@
+import 'package:bozjan_quest_app/bozjan/tabs/top/map_page.dart';
+import 'package:bozjan_quest_app/zadnor/tabs/top/timers_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 
@@ -214,7 +216,7 @@ class _MapPopupTimerState extends State<MapPopupTimer>
           builder: (BuildContext context, Widget? child) {
             return new Text(
               timer,
-              style: themeData.textTheme.titleLarge,
+              style: themeData.textTheme.headline6,
             );
           },
         ),

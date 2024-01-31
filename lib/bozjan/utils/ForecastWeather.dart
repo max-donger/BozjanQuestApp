@@ -5,7 +5,7 @@ int forecastWeather(int lDate) {
   // lDate is the current local time.
 
   // TODO: Make a unit test for this. You can already check output by doing return unixTime.
-  int unixTime = lDate ~/ 1000;
+  int unixTime = (lDate / 1000).toInt();
 
   // Get Eorzea hour for weather start
   var bell = unixTime / 175;
@@ -14,7 +14,7 @@ int forecastWeather(int lDate) {
   var increment = (bell + 8 - (bell % 8)) % 24;
 
   // Take Eorzea days since unix epoch
-  int totalDays = unixTime ~/ 4200;
+  int totalDays = (unixTime / 4200).toInt();
   // totalDays = (totalDays << 32) >>> 0; // Original
   // totalDays = ((totalDays << 32) & 0xFFFFFFFF) >> 0; // Convert to uint -- Note I have no idea why I had to disable this.
 

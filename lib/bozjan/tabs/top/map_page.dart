@@ -1,6 +1,6 @@
-/*
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_map/plugin_api.dart';
 import 'package:latlong2/latlong.dart' as latLng;
 // import 'custom_popup.dart';
 import 'package:flutter_map_marker_popup/flutter_map_marker_popup.dart';
@@ -229,4 +229,3 @@ class _StarMobsTimerState extends State<StarMobsTimer>
     return markerIcon;
   }
 }
-*/
