@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+double? _rank = 0;
+
 class SelectRankWidget extends StatefulWidget {
   const SelectRankWidget({super.key});
 
@@ -23,10 +25,12 @@ class _SelectRankWidgetState extends State<SelectRankWidget> {
           min: 15,
           max: 25,
           divisions: 10,
-          onChanged: (double value) {
+          onChanged: (value) {
             setState(() {
               _currentSliderValue = value;
             });
+            _rank = _currentSliderValue;
+            print('I changed to rank $_rank');
           }),
       Text(
         '$_currentSliderValue',
@@ -35,4 +39,8 @@ class _SelectRankWidgetState extends State<SelectRankWidget> {
       ),
     ]);
   }
+}
+
+getRank() {
+  return _rank;
 }

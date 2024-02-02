@@ -48,7 +48,8 @@ class HomePage extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     if (notifier.pageName != PageName.drs) {
-                      notifier.changePage(page: PageName.drs, unknown: false);
+                      notifier.changePage(
+                          page: PageName.drs, unknown: false, query: '');
                     }
                   },
                   child: const Text('Delubrum Reginae (Savage)'),

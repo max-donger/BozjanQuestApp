@@ -1,3 +1,4 @@
+import 'package:BozjaHelp/pages/holster.dart';
 import 'package:flutter/material.dart';
 import '../enums.dart';
 import 'routes.dart';
@@ -10,6 +11,9 @@ class AppRouteInformationParser extends RouteInformationParser<AppRoute> {
   Future<AppRoute> parseRouteInformation(
       RouteInformation routeInformation) async {
     final uri = routeInformation.uri;
+
+    print(Uri.base.query);
+    print(Uri.base.queryParameters['zone'].toString());
 
     if (uri.pathSegments.isEmpty) {
       return AppRoute.home();
@@ -39,11 +43,13 @@ class AppRouteInformationParser extends RouteInformationParser<AppRoute> {
   @override
   RouteInformation? restoreRouteInformation(AppRoute configuration) {
     if (configuration.isDrs) {
-      return _getRouteInformation(configuration.pageName!.name);
+      return _getRouteInformation(
+          configuration.pageName!.name, configuration.query);
     }
 
     if (configuration.isHolster) {
-      return _getRouteInformation(configuration.pageName!.name);
+      return _getRouteInformation(
+          configuration.pageName!.name, configuration.query);
     }
 
     if (configuration.isUnknown) {
@@ -54,7 +60,7 @@ class AppRouteInformationParser extends RouteInformationParser<AppRoute> {
   }
 
 //Get Route Information depending on the PageName passed
-  RouteInformation _getRouteInformation(String page) {
-    return RouteInformation(uri: Uri.parse('/$page'));
+  RouteInformation _getRouteInformation(String page, queryParam) {
+    return RouteInformation(uri: Uri.parse('/$page' + '?' + '$queryParam'));
   }
 }

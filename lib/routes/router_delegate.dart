@@ -62,23 +62,23 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
   @override
   Future<void> setNewRoutePath(AppRoute configuration) async {
     if (configuration.isUnknown) {
-      _updateRoute(page: null, isUnknown: true);
+      _updateRoute(page: null, isUnknown: true, query: '');
     }
 
     if (configuration.isDrs) {
-      _updateRoute(page: PageName.drs);
+      _updateRoute(page: PageName.drs, query: drsQuery);
     }
 
     if (configuration.isHolster) {
-      _updateRoute(page: PageName.holster);
+      _updateRoute(page: PageName.holster, query: drsQuery);
     }
 
     if (configuration.isHome) {
-      _updateRoute(page: PageName.home);
+      _updateRoute(page: PageName.home, query: '');
     }
   }
 
-  _updateRoute({PageName? page, bool isUnknown = false}) {
-    notifier.changePage(page: page, unknown: isUnknown);
+  _updateRoute({PageName? page, bool isUnknown = false, String query = ''}) {
+    notifier.changePage(page: page, unknown: isUnknown, query: query);
   }
 }

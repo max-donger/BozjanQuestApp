@@ -33,7 +33,8 @@ class NavBar extends StatelessWidget {
             page: PageName.home,
             onTap: () {
               if (notifier.pageName != PageName.home) {
-                notifier.changePage(page: PageName.home, unknown: false);
+                notifier.changePage(
+                    page: PageName.home, unknown: false, query: '');
               }
             },
           ),
@@ -42,7 +43,8 @@ class NavBar extends StatelessWidget {
             page: PageName.drs,
             onTap: () {
               if (notifier.pageName != PageName.drs) {
-                notifier.changePage(page: PageName.drs, unknown: false);
+                notifier.changePage(
+                    page: PageName.drs, unknown: false, query: '');
               }
             },
           ),
