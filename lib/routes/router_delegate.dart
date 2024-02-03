@@ -28,7 +28,7 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
           if (notifier.pageName == PageName.drs)
             const MaterialPage(child: DrsPage()),
           if (notifier.pageName == PageName.holster)
-            const MaterialPage(child: HolsterPage()),
+            const MaterialPage(child: HolsterListPage()),
         ],
         onPopPage: (route, result) => route.didPop(result));
   }

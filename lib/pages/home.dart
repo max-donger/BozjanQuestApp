@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
         body: Container(
           padding: const EdgeInsets.all(50.0),
           child: Column(
-            children: <Widget>[
+            children: [
               SizedBox(
                 width: double.infinity,
                 height: 100,

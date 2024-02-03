@@ -31,7 +31,7 @@ class DrsPage extends StatelessWidget {
             key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
+              children: [
                 // Server
                 SelectServerWidget(),
                 // Class

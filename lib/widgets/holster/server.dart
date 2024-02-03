@@ -23,7 +23,7 @@ class _SelectServerWidgetState extends State<SelectServerWidget> {
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
+          children: [
             Expanded(
               child: RadioListTile(
                 title: const Text('ABBA'),
