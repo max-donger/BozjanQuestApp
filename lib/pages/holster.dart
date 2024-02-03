@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../model/holster.dart';
-import '../pages/drs.dart';
+import '../pages/holsterItem.dart';
 
 var query = Uri.base.query;
 var queryParam = Uri.base.queryParameters;
@@ -13,15 +13,16 @@ class HolsterListPage extends StatefulWidget {
 }
 
 class _HolsterListPageState extends State<HolsterListPage> {
+  List<String> selectedHolster = [];
   List<String> selectedDiscord = ['LegoSteppers'];
-  List<String> selectedRole = [];
+  List<String> selectedRoles = [];
 
   @override
   Widget build(BuildContext context) {
     final filterHolsters = holsterList.where((holster) {
       return (selectedDiscord.isEmpty ||
               selectedDiscord.contains(holster.discord)) &&
-          (selectedRole.isEmpty || selectedRole.contains(holster.role));
+          (selectedRoles.isEmpty || selectedRoles.contains(holster.role));
     }).toList();
     return Scaffold(
       body: Column(
@@ -34,6 +35,8 @@ class _HolsterListPageState extends State<HolsterListPage> {
                   .map(
                     (discord) => ChoiceChip(
                       label: Text(discord),
+                      color: MaterialStateProperty.all(
+                          Theme.of(context).primaryColor),
                       selected: selectedDiscord.contains(discord),
                       onSelected: (bool selected) {
                         setState(
@@ -61,14 +64,16 @@ class _HolsterListPageState extends State<HolsterListPage> {
                     (role) => FilterChip(
                       label: Text(role),
                       // avatar: Image.network('../assets/icon_tank.png'),
-                      selected: selectedRole.contains(role),
+                      color: MaterialStateProperty.all(
+                          Theme.of(context).primaryColor),
+                      selected: selectedRoles.contains(role),
                       onSelected: (selected) {
                         setState(
                           () {
                             if (selected) {
-                              selectedRole.add(role);
+                              selectedRoles.add(role);
                             } else {
-                              selectedRole.remove(role);
+                              selectedRoles.remove(role);
                             }
                           },
                         );
@@ -90,7 +95,7 @@ class _HolsterListPageState extends State<HolsterListPage> {
                         decoration:
                             const BoxDecoration(color: Colors.indigoAccent),
                         child: ListTile(
-                          contentPadding: const EdgeInsets.symmetric(),
+                          leading: CircleAvatar(child: Icon(holster.icon)),
                           title: Text(
                             holster.title,
                             style: TextStyle(
@@ -103,6 +108,13 @@ class _HolsterListPageState extends State<HolsterListPage> {
                                 color: Colors.white,
                                 fontStyle: FontStyle.italic),
                           ),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                new MaterialPageRoute(
+                                    builder: (context) => HolsterItem()));
+                          },
+                          selected: selectedHolster.contains(holster),
                         ),
                       ),
                     );
@@ -119,3 +131,4 @@ final _filteredList =
     holsterList.where((holster) => holster.discord == 'LegoSteppers').toList();
 // final _filteredList =
 // holsters.where((holster) => holster.zone == filter).toList();
+

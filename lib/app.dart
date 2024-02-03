@@ -17,6 +17,7 @@ class App extends StatelessWidget {
       title: 'Bozja Help',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        primaryColor: Colors.blue.shade100,
       ),
     );
   }

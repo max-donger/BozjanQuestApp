@@ -85,6 +85,12 @@ class DrsPage extends StatelessWidget {
                   },
                   child: const Text('Show Loadouts - BSF'),
                 ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Close'),
+                ),
               ],
             ),
           ),
