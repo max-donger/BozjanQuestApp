@@ -1,31 +1,58 @@
+import 'package:BozjaHelp/model/holster.dart';
 import 'package:flutter/material.dart';
+import '../model/actions.dart';
+import '../model/actions.dart';
 
 class HolsterItem extends StatelessWidget {
   const HolsterItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Change DefaultTabController to just Scaffold?
     return Scaffold(
-      body: Column(
-        children: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
+      body: Column(children: [
+        ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Close'),
+        ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: prePopActions1.length,
+            itemBuilder: (context, index) {
+              return CardList(listData: prePopActions1[index]);
             },
-            child: const Text('Close'),
           ),
-          Expanded(
-            child: ListView(
-              children: List.generate(5, (index) {
-                return Center(
-                  child: Text(
-                    'Lost Action $index',
-                    style: Theme.of(context).textTheme.headlineSmall,
-                  ),
-                );
-              }),
-            ),
+        ),
+      ]),
+    );
+  }
+}
+
+class CardList extends StatelessWidget {
+  final List<LostAction> listData;
+
+  CardList({required this.listData});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(10.0),
+      child: Column(
+        children: [
+          ListTile(
+            title: Text('List ${listData[0]}'),
+          ),
+          Divider(),
+          ListView.builder(
+            itemCount: listData.length,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(listData[index].name),
+              );
+            },
           ),
         ],
       ),
