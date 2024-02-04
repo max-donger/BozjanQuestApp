@@ -31,17 +31,30 @@ class HolsterItem extends StatelessWidget {
 
 class CardList extends StatelessWidget {
   final List<LostAction> listData;
+  late String _group;
 
   CardList({required this.listData});
 
   @override
   Widget build(BuildContext context) {
+    // This code is messy, but it works.
+    // It checks if the current index is the last on the list,
+    // and if it is, it sets the name.
+    // Because of this we also make CardList no longer immutable because of the late _group
+    if (listData[0] == listData.last) {
+      _group = 'Holster';
+    } else {
+      _group = 'PrePop when entering';
+    }
     return Card(
       margin: EdgeInsets.all(10.0),
       child: Column(
         children: [
-          ListTile(
-            title: Text('List ${listData[0]}'),
+          Container(
+            decoration: const BoxDecoration(color: Colors.indigoAccent),
+            child: ListTile(
+              title: Text('$_group'),
+            ),
           ),
           Divider(),
           ListView.builder(
@@ -49,8 +62,22 @@ class CardList extends StatelessWidget {
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(listData[index].name),
+              return Container(
+                decoration: const BoxDecoration(color: Colors.indigoAccent),
+                child: ListTile(
+                  leading: CircleAvatar(child: Icon(listData[index].icon)),
+                  title: Text(
+                    listData[index].name,
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text(
+                    'some subtitle here',
+                    style: TextStyle(
+                        color: Colors.white, fontStyle: FontStyle.italic),
+                  ),
+                  trailing: Text(listData[index].weight.toString()),
+                ),
               );
             },
           ),

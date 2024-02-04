@@ -24,6 +24,7 @@ class LostAction extends StatelessWidget {
   }
 }
 
+// Database of Lost Actions
 final List<LostAction> lostActionList = [
   LostAction(
     id: 1,
@@ -98,10 +99,3 @@ final List<List<LostAction>> prePopActions1 = [
     lostActionList.firstWhere((action) => action.id == 56)
   ]
 ];
-
-final LostAction act1 = LostAction(
-  id: 69,
-  name: 'Beep Boop',
-  icon: Icons.center_focus_strong,
-  weight: 6,
-);
